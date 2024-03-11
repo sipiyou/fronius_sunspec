@@ -1,0 +1,66 @@
+Start,End,Size,R/W,"Function
+codes",Name,Description,Type,Units,Scale Factor,"Range
+of values"
+1,1,1,R,0x03,ID,Well-known value. Uniquely identifies this as a sunspec model inverter (11x),uint16,,,"111, 113"
+2,2,1,R,0x03,L,Length of sunspec model inverter (11x),uint16,Registers,,60
+3,4,2,R,0x03,A,AC Current,float32,A,,
+5,6,2,R,0x03,AphA,Phase A Current,float32,A,,
+7,8,2,R,0x03,AphB,Phase B Current,float32,A,,"This data-point is supported/not-supported depending on the grid connection.
+"
+9,10,2,R,0x03,AphC,Phase C Current,float32,A,,"This data-point is supported/not-supported depending on the grid connection.
+"
+11,12,2,R,0x03,PPVphAB,Phase Voltage AB,float32,V,,"This data-point is supported/not-supported depending on the grid connection.
+"
+13,14,2,R,0x03,PPVphBC,Phase Voltage BC,float32,V,,"This data-point is supported/not-supported depending on the grid connection.
+"
+15,16,2,R,0x03,PPVphCA,Phase Voltage CA,float32,V,,"This data-point is supported/not-supported depending on the grid connection.
+"
+17,18,2,R,0x03,PhVphA,Phase Voltage AN,float32,V,,
+19,20,2,R,0x03,PhVphB,Phase Voltage BN,float32,V,,"This data-point is supported/not-supported depending on the grid connection.
+"
+21,22,2,R,0x03,PhVphC,Phase Voltage CN,float32,V,,"This data-point is supported/not-supported depending on the grid connection.
+"
+23,24,2,R,0x03,W,AC Power,float32,W,,
+25,26,2,R,0x03,Hz,Line Frequency,float32,Hz,,
+27,28,2,R,0x03,VA,AC Apparent Power,float32,VA,,
+29,30,2,R,0x03,VAr,AC Reactive Power,float32,var,,
+31,32,2,R,0x03,PF,AC Power Factor,float32,Pct,,
+33,34,2,R,0x03,WH,AC Energy,float32,Wh,,
+35,36,2,R,0x03,DCA,DC Current,float32,A,,"not supported if the inverter has multiple DC inputs
+current of DC-strings can be found in MPPT model 160
+"
+37,38,2,R,0x03,DCV,DC Voltage,float32,V,,"not supported if the inverter has multiple DC inputs
+current of DC-strings can be found in MPPT model 160
+"
+39,40,2,R,0x03,DCW,DC Power,float32,W,,
+41,42,2,R,0x03,TmpCab,Cabinet Temperature,float32,C,,
+43,44,2,R,0x03,TmpSnk,Heat Sink Temperature,float32,C,,not supported
+45,46,2,R,0x03,TmpTrns,Transformer Temperature,float32,C,,not supported
+47,48,2,R,0x03,TmpOt,Other Temperature,float32,C,,not supported
+49,49,1,R,0x03,St,Enumerated value.  Operating state,enum16,,,
+50,50,1,R,0x03,StVnd,Vendor specific operating state code,enum16,,,"same as register ""St"""
+51,52,2,R,0x03,Evt1,Bitmask value. Event fields,bitfield32,,,
+53,54,2,R,0x03,Evt2,Reserved for future use,bitfield32,,,
+55,56,2,R,0x03,EvtVnd1,Vendor defined events,bitfield32,,,"""Customer"" event severity level bitfield
+  bit 0 -> Error
+  bit 1 -> Warning
+  bit 2 -> Info
+
+This bitfield is composed as a superposition for the severity-levels of all currently active events on view level ""Customer"".
+If a bit is set it means that currently there is at least one active event with this severity level.
+Multiple bits can be set at once indicating several active events with different severity-levels.
+"
+57,58,2,R,0x03,EvtVnd2,Vendor defined events,bitfield32,,,"""Technician"" event severity level bitfield
+  bit 0 -> Error
+  bit 1 -> Warning
+  bit 2 -> Info
+
+This bitfield is composed as a superposition for the severity-levels of all currently active events on view level ""Technician""
+If a bit is set it means that currently there is at least one active event with this severity level.
+Multiple bits can be set at once indicating several active events with different severity-levels.
+
+View level ""Technician"" is a superset of view level ""Customer"". This means that all events visible
+for view level ""Customer"" are also visible for view level ""Technician"".
+"
+59,60,2,R,0x03,EvtVnd3,Vendor defined events,bitfield32,,,not supported
+61,62,2,R,0x03,EvtVnd4,Vendor defined events,bitfield32,,,not supported

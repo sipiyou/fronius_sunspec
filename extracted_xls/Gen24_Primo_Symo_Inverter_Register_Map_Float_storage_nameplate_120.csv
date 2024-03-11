@@ -1,0 +1,31 @@
+Start,End,Size,R/W,"Function
+codes",Name,Description,Type,Units,Scale Factor,"Range
+of values"
+1,1,1,R,0x03,ID,Well-known value. Uniquely identifies this as a sunspec model nameplate (120),uint16,,,120
+2,2,1,R,0x03,L,Length of sunspec model nameplate (120),uint16,Registers,,26
+3,3,1,R,0x03,DERTyp,Type of DER device. Default value is 4 to indicate PV device.,enum16,,,82 (PV_STOR)
+4,4,1,R,0x03,WRtg,Continuous power output capability of the inverter.,uint16,W,WRtg_SF,
+5,5,1,R,0x03,WRtg_SF,Scale factor,sunssf,,,1
+6,6,1,R,0x03,VARtg,Continuous Volt-Ampere capability of the inverter.,uint16,VA,VARtg_SF,
+7,7,1,R,0x03,VARtg_SF,Scale factor,sunssf,,,1
+8,8,1,R,0x03,VArRtgQ1,Continuous VAR capability of the inverter in quadrant 1.,int16,var,VArRtg_SF,
+9,9,1,R,0x03,VArRtgQ2,Continuous VAR capability of the inverter in quadrant 2.,int16,var,VArRtg_SF,
+10,10,1,R,0x03,VArRtgQ3,Continuous VAR capability of the inverter in quadrant 3.,int16,var,VArRtg_SF,
+11,11,1,R,0x03,VArRtgQ4,Continuous VAR capability of the inverter in quadrant 4.,int16,var,VArRtg_SF,
+12,12,1,R,0x03,VArRtg_SF,Scale factor,sunssf,,,1
+13,13,1,R,0x03,ARtg,Maximum RMS AC current level capability of the inverter.,uint16,A,ARtg_SF,
+14,14,1,R,0x03,ARtg_SF,Scale factor,sunssf,,,2
+15,15,1,R,0x03,PFRtgQ1,Minimum power factor capability of the inverter in quadrant 1.,int16,cos(),PFRtg_SF,from -1.0 to 0
+16,16,1,R,0x03,PFRtgQ2,Minimum power factor capability of the inverter in quadrant 2.,int16,cos(),PFRtg_SF,from 0 to 1.0
+17,17,1,R,0x03,PFRtgQ3,Minimum power factor capability of the inverter in quadrant 3.,int16,cos(),PFRtg_SF,from -1.0 to 0
+18,18,1,R,0x03,PFRtgQ4,Minimum power factor capability of the inverter in quadrant 4.,int16,cos(),PFRtg_SF,from 0 to 1.0
+19,19,1,R,0x03,PFRtg_SF,Scale factor,sunssf,,,-3
+20,20,1,R,0x03,WHRtg,Nominal energy rating of storage device.,uint16,Wh,WHRtg_SF,
+21,21,1,R,0x03,WHRtg_SF,Scale factor,sunssf,,,
+22,22,1,R,0x03,AhrRtg,The usable capacity of the battery.  Maximum charge minus minimum charge from a technology capability perspective (Amp-hour capacity rating).,uint16,AH,AhrRtg_SF,not supported
+23,23,1,R,0x03,AhrRtg_SF,Scale factor for amp-hour rating.,sunssf,,,not supported
+24,24,1,R,0x03,MaxChaRte,Maximum rate of energy transfer into the storage device.,uint16,W,MaxChaRte_SF,
+25,25,1,R,0x03,MaxChaRte_SF,Scale factor,sunssf,,,0
+26,26,1,R,0x03,MaxDisChaRte,Maximum rate of energy transfer out of the storage device.,uint16,W,MaxDisChaRte_SF,
+27,27,1,R,0x03,MaxDisChaRte_SF,Scale factor,sunssf,,,0
+28,28,1,R,0x03,Pad,Pad register.,pad,,,

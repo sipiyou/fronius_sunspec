@@ -1,0 +1,71 @@
+Start,End,Size,R/W,"Function
+codes",Name,Description,Type,Units,Scale Factor,"Range
+of values"
+1,1,1,R,0x03,ID,Well-known value. Uniquely identifies this as a sunspec model controls (123),uint16,,,123
+2,2,1,R,0x03,L,Length of sunspec model controls (123),uint16,Registers,,24
+3,3,1,RW,"0x03
+0x06
+0x10",Conn_WinTms,Time window for connect/disconnect.,uint16,Secs,,0 - 300
+4,4,1,RW,"0x03
+0x06
+0x10",Conn_RvrtTms,Timeout period for connect/disconnect.,uint16,Secs,,0 - 28800
+5,5,1,RW,"0x03
+0x06
+0x10",Conn,Enumerated valued.  Connection control.,enum16,,,"0: Disconnected
+1: Connected"
+6,6,1,RW,"0x03
+0x06
+0x10",WMaxLimPct,Set power output to specified level.,uint16,% WMax,WMaxLimPct_SF,0% - 100%
+7,7,1,RW,"0x03
+0x06
+0x10",WMaxLimPct_WinTms,Time window for power limit change.,uint16,Secs,,0 - 300
+8,8,1,RW,"0x03
+0x06
+0x10",WMaxLimPct_RvrtTms,Timeout period for power limit.,uint16,Secs,,0 - 28800
+9,9,1,RW,"0x03
+0x06
+0x10",WMaxLimPct_RmpTms,Ramp time for moving from current setpoint to new setpoint.,uint16,Secs,,0 - 65534
+10,10,1,RW,"0x03
+0x06
+0x10",WMaxLim_Ena,Enumerated valued.  Throttle enable/disable control.,enum16,,,"0: Disabled
+1: Enabled"
+11,11,1,RW,"0x03
+0x06
+0x10",OutPFSet,Set power factor to specific value - cosine of angle.,int16,cos(),OutPFSet_SF,"from -1.0 to nameplate.PFRtgQ1
+and
+from nameplate.PFRtgQ4 to +1.0"
+12,12,1,RW,"0x03
+0x06
+0x10",OutPFSet_WinTms,Time window for power factor change.,uint16,Secs,,0 - 300
+13,13,1,RW,"0x03
+0x06
+0x10",OutPFSet_RvrtTms,Timeout period for power factor.,uint16,Secs,,0 - 28800
+14,14,1,RW,"0x03
+0x06
+0x10",OutPFSet_RmpTms,Ramp time for moving from current setpoint to new setpoint.,uint16,Secs,,0 - 65534
+15,15,1,RW,"0x03
+0x06
+0x10",OutPFSet_Ena,Enumerated valued.  Fixed power factor enable/disable control.,enum16,,,"0: Disabled
+1: Enabled"
+16,16,1,R,0x03,VArWMaxPct,Reactive power in percent of WMax.,int16,% WMax,VArPct_SF,not supported
+17,17,1,RW,"0x03
+0x06
+0x10",VArMaxPct,Reactive power in percent of VArMax.,int16,% VArMax,VArPct_SF,-100% - +100%
+18,18,1,R,0x03,VArAvalPct,Reactive power in percent of VArAval.,int16,% VArAval,VArPct_SF,not supported
+19,19,1,RW,"0x03
+0x06
+0x10",VArPct_WinTms,Time window for VAR limit change.,uint16,Secs,,0 - 300
+20,20,1,RW,"0x03
+0x06
+0x10",VArPct_RvrtTms,Timeout period for VAR limit.,uint16,Secs,,0 - 28800
+21,21,1,RW,"0x03
+0x06
+0x10",VArPct_RmpTms,Ramp time for moving from current setpoint to new setpoint.,uint16,Secs,,0 - 65534
+22,22,1,R,0x03,VArPct_Mod,Enumerated value. VAR percent limit mode.,enum16,,,2: VAR limit as a % of VArMax
+23,23,1,RW,"0x03
+0x06
+0x10",VArPct_Ena,Enumerated valued.  Percent limit VAr enable/disable control.,enum16,,,"0: Disabled
+1: Enabled"
+24,24,1,R,0x03,WMaxLimPct_SF,Scale factor for power output percent.,sunssf,,,-2
+25,25,1,R,0x03,OutPFSet_SF,Scale factor for power factor.,sunssf,,,-3
+26,26,1,R,0x03,VArPct_SF,Scale factor for reactive power percent.,sunssf,,,0

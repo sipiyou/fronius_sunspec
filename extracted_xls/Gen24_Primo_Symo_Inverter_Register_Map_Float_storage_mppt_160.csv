@@ -1,0 +1,55 @@
+Start,End,Size,R/W,"Function
+codes",Name,Description,Type,Units,Scale Factor,"Range
+of values"
+1,1,1,R,0x03,ID,Well-known value. Uniquely identifies this as a sunspec model mppt (160),uint16,,,160
+2,2,1,R,0x03,L,Length of sunspec model mppt (160),uint16,Registers,,88
+3,3,1,R,0x03,DCA_SF,Current Scale Factor,sunssf,,,auto-scaled on DCA 1-N
+4,4,1,R,0x03,DCV_SF,Voltage Scale Factor,sunssf,,,auto-scaled on DCV 1-N
+5,5,1,R,0x03,DCW_SF,Power Scale Factor,sunssf,,,auto-scaled on DCW 1-N
+6,6,1,R,0x03,DCWH_SF,Energy Scale Factor,sunssf,,,auto-scaled on DCWH 1-N
+7,8,2,R,0x03,Evt,Global Events,bitfield32,,,not supported
+9,9,1,R,0x03,N,Number of Modules,count,,,"number of mppt trackers  +  2 * number of battery inputs
+
+2 MPPT and 1 BATTERY => 4 repeating blocks
+"
+10,10,1,R,0x03,TmsPer,Timestamp Period,uint16,,,not supported
+11,11,1,R,0x03,module/1/ID,Input ID,uint16,,,1
+12,19,8,R,0x03,module/1/IDStr,Input ID Sting,string,,,'MPPT 1'
+20,20,1,R,0x03,module/1/DCA,DC Current,uint16,A,DCA_SF,
+21,21,1,R,0x03,module/1/DCV,DC Voltage,uint16,V,DCV_SF,
+22,22,1,R,0x03,module/1/DCW,DC Power,uint16,W,DCW_SF,
+23,24,2,R,0x03,module/1/DCWH,Lifetime Energy,acc32,Wh,DCWH_SF,
+25,26,2,R,0x03,module/1/Tms,Timestamp,uint32,Secs,,number of seconds since Jan 1st 2000 00:00 am
+27,27,1,R,0x03,module/1/Tmp,Temperature,int16,C,,not supported
+28,28,1,R,0x03,module/1/DCSt,Operating State,enum16,,,not supported
+29,30,2,R,0x03,module/1/DCEvt,Module Events,bitfield32,,,not supported
+31,31,1,R,0x03,module/2/ID,Input ID,uint16,,,2
+32,39,8,R,0x03,module/2/IDStr,Input ID Sting,string,,,'MPPT 2'
+40,40,1,R,0x03,module/2/DCA,DC Current,uint16,A,DCA_SF,
+41,41,1,R,0x03,module/2/DCV,DC Voltage,uint16,V,DCV_SF,
+42,42,1,R,0x03,module/2/DCW,DC Power,uint16,W,DCW_SF,
+43,44,2,R,0x03,module/2/DCWH,Lifetime Energy,acc32,Wh,DCWH_SF,
+45,46,2,R,0x03,module/2/Tms,Timestamp,uint32,Secs,,number of seconds since Jan 1st 2000 00:00 am
+47,47,1,R,0x03,module/2/Tmp,Temperature,int16,C,,not supported
+48,48,1,R,0x03,module/2/DCSt,Operating State,enum16,,,not supported
+49,50,2,R,0x03,module/2/DCEvt,Module Events,bitfield32,,,not supported
+51,51,1,R,0x03,module/3/ID,Input ID,uint16,,,3
+52,59,8,R,0x03,module/3/IDStr,Input ID Sting,string,,,'StCha 3'
+60,60,1,R,0x03,module/3/DCA,DC Current,uint16,A,DCA_SF,When the battery is discharged the data-points of the charge input are set to 0
+61,61,1,R,0x03,module/3/DCV,DC Voltage,uint16,V,DCV_SF,When the battery is discharged the data-points of the charge input are set to 0
+62,62,1,R,0x03,module/3/DCW,DC Power,uint16,W,DCW_SF,When the battery is discharged the data-points of the charge input are set to 0
+63,64,2,R,0x03,module/3/DCWH,Lifetime Energy,acc32,Wh,DCWH_SF,When the battery is discharged the data-points of the charge input are set to 0
+65,66,2,R,0x03,module/3/Tms,Timestamp,uint32,Secs,,number of seconds since Jan 1st 2000 00:00 am
+67,67,1,R,0x03,module/3/Tmp,Temperature,int16,C,,not supported
+68,68,1,R,0x03,module/3/DCSt,Operating State,enum16,,,not supported
+69,70,2,R,0x03,module/3/DCEvt,Module Events,bitfield32,,,not supported
+71,71,1,R,0x03,module/4/ID,Input ID,uint16,,,4
+72,79,8,R,0x03,module/4/IDStr,Input ID Sting,string,,,'StDisCha 4'
+80,80,1,R,0x03,module/4/DCA,DC Current,uint16,A,DCA_SF,When the battery is charged the data-points of the discharge input are set to 0
+81,81,1,R,0x03,module/4/DCV,DC Voltage,uint16,V,DCV_SF,When the battery is charged the data-points of the discharge input are set to 0
+82,82,1,R,0x03,module/4/DCW,DC Power,uint16,W,DCW_SF,When the battery is charged the data-points of the discharge input are set to 0
+83,84,2,R,0x03,module/4/DCWH,Lifetime Energy,acc32,Wh,DCWH_SF,When the battery is charged the data-points of the discharge input are set to 0
+85,86,2,R,0x03,module/4/Tms,Timestamp,uint32,Secs,,number of seconds since Jan 1st 2000 00:00 am
+87,87,1,R,0x03,module/4/Tmp,Temperature,int16,C,,not supported
+88,88,1,R,0x03,module/4/DCSt,Operating State,enum16,,,not supported
+89,90,2,R,0x03,module/4/DCEvt,Module Events,bitfield32,,,not supported

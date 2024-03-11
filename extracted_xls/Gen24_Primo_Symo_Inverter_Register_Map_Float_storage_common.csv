@@ -1,0 +1,27 @@
+Start,End,Size,R/W,"Function
+codes",Name,Description,Type,Units,Scale Factor,"Range
+of values"
+1,1,1,R,0x03,ID,Well-known value. Uniquely identifies this as a sunspec model common (1),uint16,,,1
+2,2,1,R,0x03,L,Length of sunspec model common (1),uint16,Registers,,65
+3,18,16,R,0x03,Mn,Manufacturer,string,,,Fronius
+19,34,16,R,0x03,Md,Device,string,,,"e.g. Primo GEN24 6.0
+Primo GEN24 10.0
+Primo GEN24 10.0 208-240
+Primo GEN24 3.0
+Primo GEN24 3.6
+Primo GEN24 3.8 208-240
+Primo GEN24 4.0
+Primo GEN24 4.6
+Primo GEN24 5.0
+Primo GEN24 6.0 208-240
+Symo GEN24 10.0
+Symo GEN24 3.0
+Symo GEN24 4.0
+Symo GEN24 5.0
+Symo GEN24 6.0
+Symo GEN24 8.0
+"
+35,42,8,R,0x03,Opt,Options,string,,,not supported
+43,50,8,R,0x03,Vr,SW version of inverter,string,,,e.g. 1.8.10-0
+51,66,16,R,0x03,SN,Serialnumber of the inverter,string,,,e.g. 28341000958270005
+67,67,1,R,0x03,DA,Modbus Device Address,uint16,,,1 - 247

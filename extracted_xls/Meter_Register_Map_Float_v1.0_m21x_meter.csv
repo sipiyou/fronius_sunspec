@@ -1,0 +1,69 @@
+"Start
+Offset","End
+Offset",Size,RW,"Function
+codes",Name,Description,Type,Units,Scale Factor,"Range
+of values"
+1,1,1,R,0x03,ID,"Uniquely identifies this as a SunSpec Meter Modbus Map (float); 211: single phase, 212: split phase, 213: three phase",uint16,,,"211, 212, 213"
+2,2,1,R,0x03,L,Length of inverter model block,uint16,Registers,,124
+3,4,2,R,0x03,A,AC Total Current value,float32,A,,
+5,6,2,R,0x03,AphA,AC Phase-A Current value,float32,A,,
+7,8,2,R,0x03,AphB,AC Phase-B Current value,float32,A,,
+9,10,2,R,0x03,AphC,AC Phase-C Current value,float32,A,,
+11,12,2,R,0x03,PhV,AC Voltage Average Phase-to-neutral value,float32,V,,
+13,14,2,R,0x03,PhVphA,AC Voltage Phase-A-to-neutral value,float32,V,,
+15,16,2,R,0x03,PhVphB,AC Voltage Phase-B-to-neutral value,float32,V,,
+17,18,2,R,0x03,PhVphC,AC Voltage Phase-C-to-neutral value,float32,V,,
+19,20,2,R,0x03,PPV,AC Voltage Average Phase-to-phase value,float32,V,,
+21,22,2,R,0x03,PPVphAB,AC Voltage Phase-AB value,float32,V,,
+23,24,2,R,0x03,PPVphBC,AC Voltage Phase-BC value,float32,V,,
+25,26,2,R,0x03,PPVphCA,AC Voltage Phase-CA value,float32,V,,
+27,28,2,R,0x03,Hz,AC Frequency value,float32,Hz,,
+29,30,2,R,0x03,W,AC Power value,float32,W,,
+31,32,2,R,0x03,WphA,AC Power Phase A value,float32,W,,
+33,34,2,R,0x03,WphB,AC Power Phase B value,float32,W,,
+35,36,2,R,0x03,WphC,AC Power Phase C value,float32,W,,
+37,38,2,R,0x03,VA,AC Apparent Power value,float32,VA,,
+39,40,2,R,0x03,VAphA,AC Apparent Power Phase A value,float32,VA,,
+41,42,2,R,0x03,VAphB,AC Apparent Power Phase B value,float32,VA,,
+43,44,2,R,0x03,VAphC,AC Apparent Power Phase C value,float32,VA,,
+45,46,2,R,0x03,VAR,AC Reactive Power value,float32,VAr,,
+47,48,2,R,0x03,VARphA,AC Reactive Power Phase A value,float32,VAr,,
+49,50,2,R,0x03,VARphB,AC Reactive Power Phase B value,float32,VAr,,
+51,52,2,R,0x03,VARphC,AC Reactive Power Phase C value,float32,VAr,,
+53,54,2,R,0x03,PF,Power Factor value,float32,cos(),,
+55,56,2,R,0x03,PFphA,Power Factor Phase A value,float32,cos(),,
+57,58,2,R,0x03,PFphB,Power Factor Phase B value,float32,cos(),,
+59,60,2,R,0x03,PFphC,Power Factor Phase C value,float32,cos(),,
+61,62,2,R,0x03,TotWhExp,Total Watt-hours Exported,uint32,Wh,,
+63,64,2,R,0x03,TotWhExpPhA,Total Watt-hours Exported phase A,uint32,Wh,,
+65,66,2,R,0x03,TotWhExpPhB,Total Watt-hours Exported phase B,uint32,Wh,,
+67,68,2,R,0x03,TotWhExpPhC,Total Watt-hours Exported phase C,uint32,Wh,,
+69,70,2,R,0x03,TotWhImp,Total Watt-hours Imported,uint32,Wh,,
+71,72,2,R,0x03,TotWhImpPhA,Total Watt-hours Imported phase A,uint32,Wh,,
+73,74,2,R,0x03,TotWhImpPhB,Total Watt-hours Imported phase B,uint32,Wh,,
+75,76,2,R,0x03,TotWhImpPhC,Total Watt-hours Imported phase C,uint32,Wh,,
+77,78,2,R,0x03,TotVAhExp,Total VA-hours Exported,uint32,VAh,,
+79,80,2,R,0x03,TotVAhExpPhA,Total VA-hours Exported phase A,uint32,VAh,,
+81,82,2,R,0x03,TotVAhExpPhB,Total VA-hours Exported phase B,uint32,VAh,,
+83,84,2,R,0x03,TotVAhExpPhC,Total VA-hours Exported phase C,uint32,VAh,,
+85,86,2,R,0x03,TotVAhImp,Total VA-hours Imported,uint32,VAh,,
+87,88,2,R,0x03,TotVAhImpPhA,Total VA-hours Imported phase A,uint32,VAh,,
+89,90,2,R,0x03,TotVAhImpPhB,Total VA-hours Imported phase B,uint32,VAh,,
+91,92,2,R,0x03,TotVAhImpPhC,Total VA-hours Imported phase C,uint32,VAh,,
+93,94,2,R,0x03,TotVArhImpQ1,Total VAR-hours Imported Q1,uint32,VArh,,register not supported
+95,96,2,R,0x03,TotVArhImpQ1phA,Total VAR-hours Imported Q1 phase A,uint32,VArh,,register not supported
+97,98,2,R,0x03,TotVArhImpQ1phB,Total VAR-hours Imported Q1 phase B,uint32,VArh,,register not supported
+99,100,2,R,0x03,TotVArhImpQ1phC,Total VAR-hours Imported Q1 phase C,uint32,VArh,,register not supported
+101,102,2,R,0x03,TotVArhImpQ2,Total VAr-hours Imported Q2,uint32,VArh,,register not supported
+103,104,2,R,0x03,TotVArhImpQ2phA,Total VAR-hours Imported Q2 phase A,uint32,VArh,,register not supported
+105,106,2,R,0x03,TotVArhImpQ2phB,Total VAR-hours Imported Q2 phase B,uint32,VArh,,register not supported
+107,108,2,R,0x03,TotVArhImpQ2phC,Total VAR-hours Imported Q2 phase C,uint32,VArh,,register not supported
+109,110,2,R,0x03,TotVArhExpQ3,Total VAr-hours Exported Q3,uint32,VArh,,register not supported
+111,112,2,R,0x03,TotVArhExpQ3phA,Total VAR-hours Exported Q3 phase A,uint32,VArh,,register not supported
+113,114,2,R,0x03,TotVArhExpQ3phB,Total VAR-hours Exported Q3 phase B,uint32,VArh,,register not supported
+115,116,2,R,0x03,TotVArhExpQ3phC,Total VAR-hours Exported Q3 phase C,uint32,VArh,,register not supported
+117,118,2,R,0x03,TotVArhExpQ4,Total VAr-hours Exported Q4,uint32,VArh,,register not supported
+119,120,2,R,0x03,TotVArhExpQ4phA,Total VAR-hours Exported Q4 phase A,uint32,VArh,,register not supported
+121,122,2,R,0x03,TotVArhExpQ4phB,Total VAR-hours Exported Q4 phase B,uint32,VArh,,register not supported
+123,124,2,R,0x03,TotVArhExpQ4phC,Total VAR-hours Exported Q4 phase C,uint32,VArh,,register not supported
+125,126,2,R,0x03,Evt,Events,uint32,,,

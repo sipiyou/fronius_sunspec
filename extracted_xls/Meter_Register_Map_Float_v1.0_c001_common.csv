@@ -1,0 +1,14 @@
+"Start
+Offset","End
+Offset",Size,RW,"Function
+codes",Name,Description,Type,Units,Scale Factor,"Range
+of values"
+1,2,2,R,0x03,SID,Well-known value. Uniquely identifies this as a SunSpec Modbus Map,uint32,,,0x53756e53 ('SunS')
+3,3,1,R,0x03,ID,Well-known value. Uniquely identifies this as a SunSpec Common Model block,uint16,,,1
+4,4,1,R,0x03,L,Length of Common Model block,uint16,Registers,,65
+5,20,16,R,0x03,Mn,Manufacturer,String32,,,Fronius
+21,36,16,R,0x03,Md,Device model,String32,,,
+37,44,8,R,0x03,Opt,Options,String16,,,
+45,52,8,R,0x03,Vr,SW version of meter,String16,,,
+53,68,16,R,0x03,SN,Serialnumber of the meter,String32,,,
+69,69,1,R,0x03,DA,Modbus Device Address,uint16,,,1-247

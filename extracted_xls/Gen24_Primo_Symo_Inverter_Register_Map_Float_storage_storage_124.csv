@@ -1,0 +1,96 @@
+Start,End,Size,R/W,"Function
+codes",Name,Description,Type,Units,Scale Factor,"Range
+of values"
+1,1,1,R,0x03,ID,Well-known value. Uniquely identifies this as a sunspec model storage (124),uint16,,,124
+2,2,1,R,0x03,L,Length of sunspec model storage (124),uint16,Registers,,24
+3,3,1,R,0x03,WChaMax,"Setpoint for maximum charge.
+
+Additional Fronius description:
+Reference Value for maximum Charge and Discharge.
+Multiply this value by InWRte to define maximum charging and OutWRte to define maximum discharging.
+Every rate between this two limits is allowed.
+The inverter is not fully capable of transferring power as reported by this reference value.
+Note that InWRte and OutWRte can be negative to define ranges for charging and discharging only
+",uint16,W,WChaMax_SF,
+4,4,1,R,0x03,WChaGra,Setpoint for maximum charging rate. Default is MaxChaRte.,uint16,% WChaMax/sec,WChaDisChaGra_SF,100%
+5,5,1,R,0x03,WDisChaGra,Setpoint for maximum discharge rate. Default is MaxDisChaRte.,uint16,% WChaMax/sec,WChaDisChaGra_SF,100%
+6,6,1,RW,"0x03
+0x06
+0x10",StorCtl_Mod,"Activate hold/discharge/charge storage control mode. Bitfield value.
+
+Additional Fronius description:
+Active hold/discharge/charge storage control mode.
+Set the charge field to enable charging and the discharge field to enable discharging.
+",bitfield16,,,"bit 0: CHARGE
+bit 1: DiSCHARGE
+"
+7,7,1,R,0x03,VAChaMax,Setpoint for maximum charging VA.,uint16,VA,VAChaMax_SF,not supported
+8,8,1,RW,"0x03
+0x06
+0x10",MinRsvPct,Setpoint for minimum reserve for storage as a percentage of the nominal maximum storage.,uint16,% WChaMax,MinRsvPct_SF,
+9,9,1,R,0x03,ChaState,Currently available energy as a percent of the capacity rating.,uint16,% AhrRtg,ChaState_SF,
+10,10,1,R,0x03,StorAval,State of charge (ChaState) minus storage reserve (MinRsvPct) times capacity rating (AhrRtg).,uint16,AH,StorAval_SF,not supported
+11,11,1,R,0x03,InBatV,Internal battery voltage.,uint16,V,InBatV_SF,not supported
+12,12,1,R,0x03,ChaSt,Charge status of storage device. Enumerated value.,enum16,,,"1: OFF
+2: EMPTY
+3: DISCHAGING
+4: CHARGING
+5: FULL
+6: HOLDING
+7: TESTING
+
+
+The status TESTING is used during battery calibration or service charge.
+"
+13,13,1,RW,"0x03
+0x06
+0x10",OutWRte,"Percent of max discharge rate.
+
+Additional Fronius description:
+Defines maximum Discharge rate. If not used than the default is 100 and WChaMax defines max. Discharge rate.
+See WChaMax for details
+",int16,% WDisChaMax,InOutWRte_SF,"valid range -100.00% - +100.00%
+
+Please note that this register has a scale factor in Register InOutWRte_SF, so for InOutWRte_SF = -2 the valid range in raw values is from -10000 to 10000.
+
+Please be aware that setting an invalid power window will result in a modbus exception 3 (ILLEGAL DATA VALUE).
+Invalid power windows are all windows where condition:
+((StorCtl_Mod == 3) AND ((-1) * InWRtg > OutWRtg))
+evaluates to true.
+This can happen for example if two negative values are written into InWRtg and OutWRtg and both limits are activated by StorCtl_Mod = 3.
+"
+14,14,1,RW,"0x03
+0x06
+0x10",InWRte,"Percent of max charging rate.
+
+Additional Fronius description:
+Defines maximum Charge rate. If not used than the default is 100 and WChaMax defines max. Charge rate.
+See WChaMax for details
+",int16, % WChaMax,InOutWRte_SF,"valid range -100.00% - +100.00%
+
+Please note that this register has a scale factor in Register InOutWRte_SF, so for InOutWRte_SF = -2 the valid range in raw values is from -10000 to 10000.
+
+Please be aware that setting an invalid power window will result in a modbus exception 3 (ILLEGAL DATA VALUE).
+Invalid power windows are all windows where condition:
+((StorCtl_Mod == 3) AND ((-1) * InWRtg > OutWRtg))
+evaluates to true.
+This can happen for example if two negative values are written into InWRtg and OutWRtg and both limits are activated by StorCtl_Mod = 3.
+"
+15,15,1,R,0x03,InOutWRte_WinTms,Time window for charge/discharge rate change.,uint16,Secs,,not supported
+16,16,1,RW,"0x03
+0x06
+0x10",InOutWRte_RvrtTms,Timeout period for charge/discharge rate.,uint16,Secs,,0 - 28800
+17,17,1,R,0x03,InOutWRte_RmpTms,Ramp time for moving from current setpoint to new setpoint.,uint16,Secs,,not supported
+18,18,1,RW,"0x03
+0x06
+0x10",ChaGriSet,,enum16,,,"0: PV (Charging from grid disabled)
+1: GRID (Charging from grid enabled)
+"
+19,19,1,R,0x03,WChaMax_SF,Scale factor for maximum charge.,sunssf,,,0
+20,20,1,R,0x03,WChaDisChaGra_SF,Scale factor for maximum charge and discharge rate.,sunssf,,,0
+21,21,1,R,0x03,VAChaMax_SF,Scale factor for maximum charging VA.,sunssf,,,not supported
+22,22,1,R,0x03,MinRsvPct_SF,Scale factor for minimum reserve percentage.,sunssf,,,-2
+23,23,1,R,0x03,ChaState_SF,Scale factor for available energy percent.,sunssf,,,-2
+24,24,1,R,0x03,StorAval_SF,Scale factor for state of charge.,sunssf,,,not supported
+25,25,1,R,0x03,InBatV_SF,Scale factor for battery voltage.,sunssf,,,not supported
+26,26,1,R,0x03,InOutWRte_SF,Scale factor for percent charge/discharge rate.,sunssf,,,-2
