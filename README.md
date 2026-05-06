@@ -145,7 +145,7 @@ Each JSON file contains an array with one device object:
 | Field | Type | Description |
 |---|---|---|
 | `start` | int | PDU start address, **1-indexed** (see derivation below) |
-| `size` | int | Number of 16-bit registers (1 for int16/uint16, 2 for float32/int32/uint32) |
+| `size` | int | Number of 16-bit registers — **not bytes**. One Modbus register = 2 bytes, so a 4-byte value (float32/int32/uint32) = `size: 2`, a 2-byte value (int16/uint16) = `size: 1` |
 | `rw` | string | `"R"` (read-only), `"W"` (write-only) or `"RW"` (read/write) |
 | `function` | string | Modbus function code: `"0x03"` = Holding Register, `"0x04"` = Input Register |
 | `name` | string | Short register name (e.g. `"W"`, `"Aussentemperatur"`) |
