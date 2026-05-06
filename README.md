@@ -187,12 +187,19 @@ Each JSON file contains an array with one device object:
 
 ### Function Code per Group
 
+The function code is determined by the register number prefix in the datasheet:
+
+| Datasheet prefix | Register type | Function code | Typical use |
+|---|---|---|---|
+| `3`XXXX (e.g. `30001`) | Input Register | `"0x04"` | Read-only measurements |
+| `4`XXXX (e.g. `40013`) | Holding Register | `"0x03"` | Configurable / read-write values |
+
+Example: `30007` → prefix `3` → Input Register → `"function": "0x04"`  
+Example: `40013` → prefix `4` → Holding Register → `"function": "0x03"`
+
 All registers in a group must use the **same** function code. The connector detects the
 function code from the first register's `function` field during JSON import and stores it
 per group in the database.
-
-- `"0x03"` — Read Holding Registers (FC03): configuration/writable registers
-- `"0x04"` — Read Input Registers (FC04): measurement registers (e.g. Stiebel Eltron ISG Block 1/3/4)
 
 Write operations always use FC16 (Write Multiple Registers) regardless of the read function code.
 
