@@ -126,6 +126,7 @@ Each JSON file contains an array with one device object:
 |---|---|
 | `device` | Device name |
 | `protocol` | Always `"TCP"` |
+| `unitID` | *(optional)* Fixed Modbus unit ID — pre-fills the Unit-ID field on import. Omit for devices with user-configurable slave addresses. |
 | `elements` | Array of register groups |
 
 **Group:**
@@ -184,6 +185,7 @@ Each JSON file contains an array with one device object:
 | `bitfield16` | 1 reg | Bit field (stored as uint16) |
 | `bitfield32` | 2 reg | Bit field (stored as uint32) |
 | `sunssf` | 1 reg | SunSpec Scale Factor (signed int16 exponent for 10^x) |
+| `wstring` | N reg | Wide-char string: 1 ASCII character per register (low byte), null-terminated. Used by devices like Vestel EVC04. |
 
 ### Function Code per Group
 
