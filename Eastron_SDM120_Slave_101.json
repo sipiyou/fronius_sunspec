@@ -2,6 +2,7 @@
   {
     "device": "Eastron_SDM120_Slave_101",
     "protocol": "TCP",
+    "maxRegs": 30,
     "elements": [
       {
         "firstID": 1,

@@ -127,6 +127,7 @@ Each JSON file contains an array with one device object:
 | `device` | Device name |
 | `protocol` | Always `"TCP"` |
 | `unitID` | *(optional)* Fixed Modbus unit ID — pre-fills the Unit-ID field on import. Omit for devices with user-configurable slave addresses. |
+| `maxRegs` | *(optional)* Maximum registers per Modbus read request. Use for devices with batch-size limits (e.g. Eastron SDM120: `30`). Omit or set to `0` for the standard limit of 125. |
 | `elements` | Array of register groups |
 
 **Group:**
