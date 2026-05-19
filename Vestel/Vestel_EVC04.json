@@ -1,0 +1,136 @@
+[
+  {
+    "device": "Vestel_EVC04",
+    "protocol": "TCP",
+    "unitID": 255,
+    "elements": [
+      {
+        "firstID": 100,
+        "group": "identity_serial",
+        "elements": {
+          "2": {"start": 100, "size": 16, "rw": "R", "function": "0x04", "name": "SerialNumber",    "desc": "Serial Number (15 digit, 1 leading null + 15 chars of 25-reg field)", "type": "wstring", "unit": "", "scaleFactor": "", "range": "", "notsupported": 0}
+        }
+      },
+      {
+        "firstID": 130,
+        "group": "identity_cpid",
+        "elements": {
+          "2": {"start": 130, "size": 16, "rw": "R", "function": "0x04", "name": "ChargepointID",   "desc": "Chargepoint ID (reads first 32 bytes of 50-reg field)", "type": "wstring", "unit": "", "scaleFactor": "", "range": "", "notsupported": 0}
+        }
+      },
+      {
+        "firstID": 190,
+        "group": "identity_brand",
+        "elements": {
+          "2": {"start": 190, "size": 8,  "rw": "R", "function": "0x04", "name": "Brand",           "desc": "Chargepoint Brand (reads first 16 bytes of 10-reg field)", "type": "wstring", "unit": "", "scaleFactor": "", "range": "", "notsupported": 0}
+        }
+      },
+      {
+        "firstID": 210,
+        "group": "identity_model",
+        "elements": {
+          "2": {"start": 210, "size": 6,  "rw": "R", "function": "0x04", "name": "Model",           "desc": "Chargepoint Model (null-prefix + 5 chars)", "type": "wstring", "unit": "", "scaleFactor": "", "range": "", "notsupported": 0}
+        }
+      },
+      {
+        "firstID": 230,
+        "group": "identity_firmware",
+        "elements": {
+          "2": {"start": 230, "size": 16, "rw": "R", "function": "0x04", "name": "FirmwareVersion", "desc": "Firmware version (reads first 32 bytes of 50-reg field)", "type": "wstring", "unit": "", "scaleFactor": "", "range": "", "notsupported": 0}
+        }
+      },
+      {
+        "firstID": 291,
+        "group": "datetime",
+        "elements": {
+          "2": {"start": 291, "size": 2, "rw": "R", "function": "0x04", "name": "Date", "desc": "Current date of CP (yymmdd)", "type": "uint32", "unit": "yymmdd", "scaleFactor": "", "range": "", "notsupported": 0},
+          "3": {"start": 295, "size": 2, "rw": "R", "function": "0x04", "name": "Time", "desc": "Current time of CP (hhmmss)", "type": "uint32", "unit": "hhmmss", "scaleFactor": "", "range": "", "notsupported": 0}
+        }
+      },
+      {
+        "firstID": 401,
+        "group": "chargepoint_info",
+        "elements": {
+          "2": {"start": 401, "size": 2, "rw": "R", "function": "0x04", "name": "ChargePointPower", "desc": "Max power of Chargepoint",  "type": "uint32", "unit": "W", "scaleFactor": "", "range": "",               "notsupported": 0},
+          "3": {"start": 405, "size": 1, "rw": "R", "function": "0x04", "name": "NumberOfPhases",   "desc": "Number of phases",          "type": "uint16", "unit": "",  "scaleFactor": "", "range": "0=1-phase, 1=3-phase", "notsupported": 0}
+        }
+      },
+      {
+        "firstID": 1001,
+        "group": "status",
+        "elements": {
+          "2": {"start": 1001, "size": 1, "rw": "R", "function": "0x04", "name": "ChargePointState", "desc": "Chargepoint State",  "type": "uint16", "unit": "", "scaleFactor": "", "range": "0=Available, 1=Preparing, 2=Charging, 3=SuspendedEVSE, 4=SuspendedEV, 5=Finishing, 6=Reserved, 7=Unavailable, 8=Faulted", "notsupported": 0},
+          "3": {"start": 1002, "size": 1, "rw": "R", "function": "0x04", "name": "ChargingState",    "desc": "Charging State",     "type": "uint16", "unit": "", "scaleFactor": "", "range": "0=Not Charging (Ax/Bx/Dx/C1), 1=Charging (C2)",                                                                              "notsupported": 0},
+          "4": {"start": 1003, "size": 1, "rw": "R", "function": "0x04", "name": "EquipmentState",   "desc": "Equipment State",    "type": "uint16", "unit": "", "scaleFactor": "", "range": "0=Initializing, 1=Running, 2=Fault, 3=Disabled, 4=Updating",                                                                 "notsupported": 0},
+          "5": {"start": 1005, "size": 1, "rw": "R", "function": "0x04", "name": "CableState",       "desc": "Cable State",        "type": "uint16", "unit": "", "scaleFactor": "", "range": "0=Not connected, 1=Cable connected/vehicle not connected, 2=Cable+vehicle connected, 3=Cable+vehicle connected+locked",       "notsupported": 0},
+          "6": {"start": 1007, "size": 2, "rw": "R", "function": "0x04", "name": "EVSEFaultCode",    "desc": "EVSE Fault Code (bitfield, see datasheet table 2)", "type": "uint32", "unit": "", "scaleFactor": "", "range": "0=No fault",                                                                                    "notsupported": 0}
+        }
+      },
+      {
+        "firstID": 1009,
+        "group": "measurements",
+        "elements": {
+          "2": {"start": 1009, "size": 1, "rw": "R", "function": "0x04", "name": "CurrentL1", "desc": "L1 Instantaneous Current", "type": "uint16", "unit": "mA", "scaleFactor": "", "range": "", "notsupported": 0},
+          "3": {"start": 1011, "size": 1, "rw": "R", "function": "0x04", "name": "CurrentL2", "desc": "L2 Instantaneous Current", "type": "uint16", "unit": "mA", "scaleFactor": "", "range": "", "notsupported": 0},
+          "4": {"start": 1013, "size": 1, "rw": "R", "function": "0x04", "name": "CurrentL3", "desc": "L3 Instantaneous Current", "type": "uint16", "unit": "mA", "scaleFactor": "", "range": "", "notsupported": 0},
+          "5": {"start": 1015, "size": 1, "rw": "R", "function": "0x04", "name": "VoltageL1", "desc": "L1 Voltage",               "type": "uint16", "unit": "V",  "scaleFactor": "", "range": "", "notsupported": 0},
+          "6": {"start": 1017, "size": 1, "rw": "R", "function": "0x04", "name": "VoltageL2", "desc": "L2 Voltage",               "type": "uint16", "unit": "V",  "scaleFactor": "", "range": "", "notsupported": 0},
+          "7": {"start": 1019, "size": 1, "rw": "R", "function": "0x04", "name": "VoltageL3", "desc": "L3 Voltage",               "type": "uint16", "unit": "V",  "scaleFactor": "", "range": "", "notsupported": 0}
+        }
+      },
+      {
+        "firstID": 1021,
+        "group": "power_energy",
+        "elements": {
+          "2": {"start": 1021, "size": 2, "rw": "R", "function": "0x04", "name": "ActivePowerTotal", "desc": "Total Active Power",       "type": "uint32", "unit": "W",   "scaleFactor": "",  "range": "", "notsupported": 0},
+          "3": {"start": 1025, "size": 2, "rw": "R", "function": "0x04", "name": "ActivePowerL1",    "desc": "L1 Active Power",          "type": "uint32", "unit": "W",   "scaleFactor": "",  "range": "", "notsupported": 0},
+          "4": {"start": 1029, "size": 2, "rw": "R", "function": "0x04", "name": "ActivePowerL2",    "desc": "L2 Active Power",          "type": "uint32", "unit": "W",   "scaleFactor": "",  "range": "", "notsupported": 0},
+          "5": {"start": 1033, "size": 2, "rw": "R", "function": "0x04", "name": "ActivePowerL3",    "desc": "L3 Active Power",          "type": "uint32", "unit": "W",   "scaleFactor": "",  "range": "", "notsupported": 0},
+          "6": {"start": 1037, "size": 2, "rw": "R", "function": "0x04", "name": "MeterReading",     "desc": "Meter Reading (x0.1 kWh)", "type": "uint32", "unit": "kWh", "scaleFactor": "-1", "range": "", "notsupported": 0}
+        }
+      },
+      {
+        "firstID": 1101,
+        "group": "current_limits",
+        "elements": {
+          "2": {"start": 1101, "size": 1, "rw": "R", "function": "0x04", "name": "SessionMaxCurrent", "desc": "Max possible charging current for active session", "type": "uint16", "unit": "A", "scaleFactor": "", "range": "", "notsupported": 0},
+          "3": {"start": 1103, "size": 1, "rw": "R", "function": "0x04", "name": "EVSEMinCurrent",    "desc": "Min possible charging current for EVSE",           "type": "uint16", "unit": "A", "scaleFactor": "", "range": "", "notsupported": 0},
+          "4": {"start": 1105, "size": 1, "rw": "R", "function": "0x04", "name": "EVSEMaxCurrent",    "desc": "Max possible charging current for EVSE",           "type": "uint16", "unit": "A", "scaleFactor": "", "range": "", "notsupported": 0},
+          "5": {"start": 1107, "size": 1, "rw": "R", "function": "0x04", "name": "CableMaxCurrent",   "desc": "Max possible charging current for cable",          "type": "uint16", "unit": "A", "scaleFactor": "", "range": "", "notsupported": 0}
+        }
+      },
+      {
+        "firstID": 1503,
+        "group": "session",
+        "elements": {
+          "2": {"start": 1503, "size": 2, "rw": "R", "function": "0x04", "name": "SessionEnergy",    "desc": "Total energy for current charging session", "type": "uint32", "unit": "Wh",     "scaleFactor": "", "range": "", "notsupported": 0},
+          "3": {"start": 1505, "size": 2, "rw": "R", "function": "0x04", "name": "SessionStartTime", "desc": "Session start time (hhmmss)",               "type": "uint32", "unit": "hhmmss", "scaleFactor": "", "range": "", "notsupported": 0},
+          "4": {"start": 1509, "size": 2, "rw": "R", "function": "0x04", "name": "SessionDuration",  "desc": "Session duration",                          "type": "uint32", "unit": "s",      "scaleFactor": "", "range": "", "notsupported": 0},
+          "5": {"start": 1513, "size": 2, "rw": "R", "function": "0x04", "name": "SessionEndTime",   "desc": "Session end time (hhmmss)",                 "type": "uint32", "unit": "hhmmss", "scaleFactor": "", "range": "", "notsupported": 0}
+        }
+      },
+      {
+        "firstID": 2001,
+        "group": "failsafe",
+        "elements": {
+          "2": {"start": 2001, "size": 1, "rw": "RW", "function": "0x03", "name": "FailsafeCurrent", "desc": "Failsafe charging current during communication failure",                                                                  "type": "uint16", "unit": "A", "scaleFactor": "", "range": "",         "notsupported": 0},
+          "3": {"start": 2003, "size": 1, "rw": "RW", "function": "0x03", "name": "FailsafeTimeout", "desc": "Communication timeout before switching to failsafe current; TCP socket restarts if still active", "type": "uint16", "unit": "s", "scaleFactor": "", "range": "default 20", "notsupported": 0}
+        }
+      },
+      {
+        "firstID": 5005,
+        "group": "charging_control",
+        "elements": {
+          "2": {"start": 5005, "size": 1, "rw": "RW", "function": "0x03", "name": "ChargingCurrent", "desc": "Dynamic charging current setpoint", "type": "uint16", "unit": "A", "scaleFactor": "", "range": "", "notsupported": 0}
+        }
+      },
+      {
+        "firstID": 6001,
+        "group": "alive",
+        "elements": {
+          "2": {"start": 6001, "size": 1, "rw": "RW", "function": "0x03", "name": "AliveRegister", "desc": "EMS writes 1 periodically (every FailsafeTimeout/2); EVSE resets to 0. No update within timeout triggers failsafe.", "type": "uint16", "unit": "", "scaleFactor": "", "range": "1=alive", "notsupported": 0}
+        }
+      }
+    ]
+  }
+]
