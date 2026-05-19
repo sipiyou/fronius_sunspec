@@ -1,0 +1,85 @@
+[
+  {
+    "device": "Sigenergy_Plant",
+    "protocol": "TCP",
+    "unitID": 247,
+    "elements": [
+      {
+        "firstID": 1,
+        "group": "plant_system",
+        "elements": {
+          "2":  {"start": 1,  "size": 2, "rw": "R", "function": "0x03", "name": "SystemTime",        "desc": "System time (epoch seconds)",                    "type": "uint32", "unit": "s",    "scaleFactor": "",   "range": "", "notsupported": 0},
+          "3":  {"start": 3,  "size": 1, "rw": "R", "function": "0x03", "name": "SystemTimeZone",    "desc": "System time zone offset",                        "type": "uint16", "unit": "min",  "scaleFactor": "",   "range": "", "notsupported": 0},
+          "4":  {"start": 4,  "size": 1, "rw": "R", "function": "0x03", "name": "EMSWorkMode",       "desc": "EMS work mode",                                  "type": "uint16", "unit": "",     "scaleFactor": "",   "range": "0=Max self consumption, 1=Sigen AI, 2=TOU, 7=Remote EMS", "notsupported": 0},
+          "5":  {"start": 5,  "size": 1, "rw": "R", "function": "0x03", "name": "GridSensorStatus",  "desc": "Grid sensor / meter connection status",          "type": "uint16", "unit": "",     "scaleFactor": "",   "range": "0=not connected, 1=connected", "notsupported": 0},
+          "6":  {"start": 6,  "size": 2, "rw": "R", "function": "0x03", "name": "GridActivePower",   "desc": "[Grid sensor] Active power at system checkpoint", "type": "int32",  "unit": "kW",   "scaleFactor": "-3", "range": ">0 buy from grid, <0 sell to grid", "notsupported": 0},
+          "7":  {"start": 8,  "size": 2, "rw": "R", "function": "0x03", "name": "GridReactivePower", "desc": "[Grid sensor] Reactive power at system checkpoint","type": "int32",  "unit": "kVar", "scaleFactor": "-3", "range": "", "notsupported": 0},
+          "8":  {"start": 10, "size": 1, "rw": "R", "function": "0x03", "name": "OnOffGridStatus",   "desc": "On/Off grid status",                             "type": "uint16", "unit": "",     "scaleFactor": "",   "range": "0=on grid, 1=off grid (auto), 2=off grid (manual)", "notsupported": 0},
+          "9":  {"start": 11, "size": 2, "rw": "R", "function": "0x03", "name": "MaxActivePower",    "desc": "Max active power (base for all adjustments)",    "type": "uint32", "unit": "kW",   "scaleFactor": "-3", "range": "", "notsupported": 0},
+          "10": {"start": 13, "size": 2, "rw": "R", "function": "0x03", "name": "MaxApparentPower",  "desc": "Max apparent power (base for all adjustments)",  "type": "uint32", "unit": "kVA",  "scaleFactor": "-3", "range": "", "notsupported": 0},
+          "11": {"start": 15, "size": 1, "rw": "R", "function": "0x03", "name": "SystemSOC",         "desc": "Energy storage system SOC",                      "type": "uint16", "unit": "%",    "scaleFactor": "-1", "range": "0..100", "notsupported": 0}
+        }
+      },
+      {
+        "firstID": 16,
+        "group": "plant_power",
+        "elements": {
+          "2":  {"start": 16, "size": 2, "rw": "R", "function": "0x03", "name": "PhaseAActivePower",   "desc": "Plant phase A active power",    "type": "int32",  "unit": "kW",   "scaleFactor": "-3", "range": "", "notsupported": 0},
+          "3":  {"start": 18, "size": 2, "rw": "R", "function": "0x03", "name": "PhaseBActivePower",   "desc": "Plant phase B active power",    "type": "int32",  "unit": "kW",   "scaleFactor": "-3", "range": "", "notsupported": 0},
+          "4":  {"start": 20, "size": 2, "rw": "R", "function": "0x03", "name": "PhaseCActivePower",   "desc": "Plant phase C active power",    "type": "int32",  "unit": "kW",   "scaleFactor": "-3", "range": "", "notsupported": 0},
+          "5":  {"start": 22, "size": 2, "rw": "R", "function": "0x03", "name": "PhaseAReactivePower", "desc": "Plant phase A reactive power",  "type": "int32",  "unit": "kVar", "scaleFactor": "-3", "range": "", "notsupported": 0},
+          "6":  {"start": 24, "size": 2, "rw": "R", "function": "0x03", "name": "PhaseBReactivePower", "desc": "Plant phase B reactive power",  "type": "int32",  "unit": "kVar", "scaleFactor": "-3", "range": "", "notsupported": 0},
+          "7":  {"start": 26, "size": 2, "rw": "R", "function": "0x03", "name": "PhaseCReactivePower", "desc": "Plant phase C reactive power",  "type": "int32",  "unit": "kVar", "scaleFactor": "-3", "range": "", "notsupported": 0},
+          "8":  {"start": 28, "size": 1, "rw": "R", "function": "0x03", "name": "GeneralAlarm1",       "desc": "General Alarm1 (see Appendix 2)", "type": "uint16", "unit": "",   "scaleFactor": "",   "range": "", "notsupported": 0},
+          "9":  {"start": 29, "size": 1, "rw": "R", "function": "0x03", "name": "GeneralAlarm2",       "desc": "General Alarm2 (see Appendix 3)", "type": "uint16", "unit": "",   "scaleFactor": "",   "range": "", "notsupported": 0},
+          "10": {"start": 30, "size": 1, "rw": "R", "function": "0x03", "name": "GeneralAlarm3",       "desc": "General Alarm3 (see Appendix 4)", "type": "uint16", "unit": "",   "scaleFactor": "",   "range": "", "notsupported": 0},
+          "11": {"start": 31, "size": 1, "rw": "R", "function": "0x03", "name": "GeneralAlarm4",       "desc": "General Alarm4 (see Appendix 5)", "type": "uint16", "unit": "",   "scaleFactor": "",   "range": "", "notsupported": 0},
+          "12": {"start": 32, "size": 2, "rw": "R", "function": "0x03", "name": "PlantActivePower",    "desc": "Plant total active power",      "type": "int32",  "unit": "kW",   "scaleFactor": "-3", "range": "", "notsupported": 0},
+          "13": {"start": 34, "size": 2, "rw": "R", "function": "0x03", "name": "PlantReactivePower",  "desc": "Plant total reactive power",    "type": "int32",  "unit": "kVar", "scaleFactor": "-3", "range": "", "notsupported": 0},
+          "14": {"start": 36, "size": 2, "rw": "R", "function": "0x03", "name": "PVPower",             "desc": "Photovoltaic power",            "type": "int32",  "unit": "kW",   "scaleFactor": "-3", "range": "", "notsupported": 0},
+          "15": {"start": 38, "size": 2, "rw": "R", "function": "0x03", "name": "ESSPower",            "desc": "ESS power (<0 discharging, >0 charging)", "type": "int32", "unit": "kW", "scaleFactor": "-3", "range": "", "notsupported": 0},
+          "16": {"start": 40, "size": 2, "rw": "R", "function": "0x03", "name": "AvailMaxActivePwr",   "desc": "Available max active power (running inverters)", "type": "uint32", "unit": "kW", "scaleFactor": "-3", "range": "", "notsupported": 0},
+          "17": {"start": 42, "size": 2, "rw": "R", "function": "0x03", "name": "AvailMinActivePwr",   "desc": "Available min active power (running inverters)", "type": "uint32", "unit": "kW", "scaleFactor": "-3", "range": "", "notsupported": 0},
+          "18": {"start": 44, "size": 2, "rw": "R", "function": "0x03", "name": "AvailMaxReactivePwr", "desc": "Available max reactive power (running inverters)", "type": "uint32", "unit": "kVar", "scaleFactor": "-3", "range": "", "notsupported": 0},
+          "19": {"start": 46, "size": 2, "rw": "R", "function": "0x03", "name": "AvailMinReactivePwr", "desc": "Available min reactive power (running inverters)", "type": "uint32", "unit": "kVar", "scaleFactor": "-3", "range": "", "notsupported": 0},
+          "20": {"start": 48, "size": 2, "rw": "R", "function": "0x03", "name": "AvailMaxChargePwr",   "desc": "Available max charging power (running inverters)", "type": "uint32", "unit": "kW", "scaleFactor": "-3", "range": "", "notsupported": 0},
+          "21": {"start": 50, "size": 2, "rw": "R", "function": "0x03", "name": "AvailMaxDischargePwr","desc": "Available max discharging power (running inverters)", "type": "uint32", "unit": "kW", "scaleFactor": "-3", "range": "", "notsupported": 0},
+          "22": {"start": 52, "size": 1, "rw": "R", "function": "0x03", "name": "PlantRunningState",   "desc": "Plant running state (see Appendix 1)",          "type": "uint16", "unit": "",   "scaleFactor": "",   "range": "", "notsupported": 0}
+        }
+      },
+      {
+        "firstID": 53,
+        "group": "plant_grid_sensor",
+        "elements": {
+          "2":  {"start": 53, "size": 2, "rw": "R", "function": "0x03", "name": "GridPhaseAActivePwr",   "desc": "[Grid sensor] Phase A active power",              "type": "int32",  "unit": "kW",   "scaleFactor": "-3", "range": ">0 buy, <0 sell", "notsupported": 0},
+          "3":  {"start": 55, "size": 2, "rw": "R", "function": "0x03", "name": "GridPhaseBActivePwr",   "desc": "[Grid sensor] Phase B active power",              "type": "int32",  "unit": "kW",   "scaleFactor": "-3", "range": ">0 buy, <0 sell", "notsupported": 0},
+          "4":  {"start": 57, "size": 2, "rw": "R", "function": "0x03", "name": "GridPhaseCActivePwr",   "desc": "[Grid sensor] Phase C active power",              "type": "int32",  "unit": "kW",   "scaleFactor": "-3", "range": ">0 buy, <0 sell", "notsupported": 0},
+          "5":  {"start": 59, "size": 2, "rw": "R", "function": "0x03", "name": "GridPhaseAReactivePwr", "desc": "[Grid sensor] Phase A reactive power",            "type": "int32",  "unit": "kVar", "scaleFactor": "-3", "range": "", "notsupported": 0},
+          "6":  {"start": 61, "size": 2, "rw": "R", "function": "0x03", "name": "GridPhaseBReactivePwr", "desc": "[Grid sensor] Phase B reactive power",            "type": "int32",  "unit": "kVar", "scaleFactor": "-3", "range": "", "notsupported": 0},
+          "7":  {"start": 63, "size": 2, "rw": "R", "function": "0x03", "name": "GridPhaseCReactivePwr", "desc": "[Grid sensor] Phase C reactive power",            "type": "int32",  "unit": "kVar", "scaleFactor": "-3", "range": "", "notsupported": 0},
+          "8":  {"start": 65, "size": 2, "rw": "R", "function": "0x03", "name": "AvailMaxChargeEnergy",  "desc": "Available max charging capacity (running inv.)",  "type": "uint32", "unit": "kWh",  "scaleFactor": "-2", "range": "", "notsupported": 0},
+          "9":  {"start": 67, "size": 2, "rw": "R", "function": "0x03", "name": "AvailMaxDischargeEnergy","desc": "Available max discharging capacity (running inv.)","type": "uint32", "unit": "kWh", "scaleFactor": "-2", "range": "", "notsupported": 0},
+          "10": {"start": 69, "size": 2, "rw": "R", "function": "0x03", "name": "RatedESSChargePwr",     "desc": "Rated ESS charging power",                        "type": "uint32", "unit": "kW",   "scaleFactor": "-3", "range": "", "notsupported": 0},
+          "11": {"start": 71, "size": 2, "rw": "R", "function": "0x03", "name": "RatedESSDischargePwr",  "desc": "Rated ESS discharging power",                     "type": "uint32", "unit": "kW",   "scaleFactor": "-3", "range": "", "notsupported": 0}
+        }
+      },
+      {
+        "firstID": 1,
+        "group": "plant_settings",
+        "elements": {
+          "2":  {"start": 1,  "size": 1, "rw": "W",  "function": "0x04", "name": "StartStop",              "desc": "Plant Start/Stop",                                          "type": "uint16", "unit": "",    "scaleFactor": "", "range": "0=Stop, 1=Start", "notsupported": 0},
+          "3":  {"start": 2,  "size": 2, "rw": "RW", "function": "0x04", "name": "ActivePwrFixedTarget",   "desc": "Active power fixed adjustment target value",                 "type": "int32",  "unit": "kW",  "scaleFactor": "-3", "range": "", "notsupported": 0},
+          "4":  {"start": 4,  "size": 2, "rw": "RW", "function": "0x04", "name": "ReactivePwrFixedTarget", "desc": "Reactive power fixed adjustment target value",               "type": "int32",  "unit": "kVar","scaleFactor": "-3", "range": "", "notsupported": 0},
+          "5":  {"start": 6,  "size": 1, "rw": "RW", "function": "0x04", "name": "ActivePwrPctTarget",     "desc": "Active power percentage adjustment target",                  "type": "int16",  "unit": "%",   "scaleFactor": "-2", "range": "-100..100", "notsupported": 0},
+          "6":  {"start": 7,  "size": 1, "rw": "RW", "function": "0x04", "name": "QSAdjTarget",            "desc": "Q/S adjustment target value",                               "type": "int16",  "unit": "%",   "scaleFactor": "-2", "range": "-60..60", "notsupported": 0},
+          "7":  {"start": 8,  "size": 1, "rw": "RW", "function": "0x04", "name": "PowerFactorTarget",      "desc": "Power factor adjustment target",                             "type": "int16",  "unit": "",    "scaleFactor": "-3", "range": "(-1,-0.8] U [0.8,1]", "notsupported": 0},
+          "8":  {"start": 30, "size": 1, "rw": "RW", "function": "0x04", "name": "RemoteEMSEnable",        "desc": "Remote EMS enable (switches EMS mode 30003 to Remote EMS)", "type": "uint16", "unit": "",    "scaleFactor": "",   "range": "0=disabled, 1=enabled", "notsupported": 0},
+          "9":  {"start": 32, "size": 1, "rw": "RW", "function": "0x04", "name": "RemoteEMSMode",          "desc": "Remote EMS control mode (see Appendix 6)",                  "type": "uint16", "unit": "",    "scaleFactor": "",   "range": "", "notsupported": 0},
+          "10": {"start": 33, "size": 2, "rw": "RW", "function": "0x04", "name": "ESSMaxChargeLimit",      "desc": "ESS max charging limit (active when EMS mode 3 or 4)",      "type": "uint32", "unit": "kW",  "scaleFactor": "-3", "range": "0..RatedESSChargePwr", "notsupported": 0},
+          "11": {"start": 35, "size": 2, "rw": "RW", "function": "0x04", "name": "ESSMaxDischargeLimit",   "desc": "ESS max discharging limit (active when EMS mode 5 or 6)",   "type": "uint32", "unit": "kW",  "scaleFactor": "-3", "range": "0..RatedESSDischargePwr", "notsupported": 0},
+          "12": {"start": 37, "size": 2, "rw": "RW", "function": "0x04", "name": "PVMaxPowerLimit",        "desc": "PV max power limit (active when EMS mode 3/4/5/6)",         "type": "uint32", "unit": "kW",  "scaleFactor": "-3", "range": "", "notsupported": 0}
+        }
+      }
+    ]
+  }
+]
