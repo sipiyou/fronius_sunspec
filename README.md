@@ -126,8 +126,12 @@ Each JSON file contains an array with one device object:
 |---|---|
 | `device` | Device name |
 | `protocol` | Always `"TCP"` |
+| `ip` | *(optional)* Device IP address — pre-fills the IP field on import. Omit if the address varies per installation. |
+| `port` | *(optional)* TCP port — pre-fills the Port field on import. Default: `502`. |
 | `unitID` | *(optional)* Fixed Modbus unit ID — pre-fills the Unit-ID field on import. Omit for devices with user-configurable slave addresses. |
+| `timeout` | *(optional)* TCP connect/read timeout in seconds — pre-fills the Timeout field on import. Default: `1`. |
 | `maxRegs` | *(optional)* Maximum registers per Modbus read request. Use for devices with batch-size limits (e.g. Eastron SDM120: `30`). Omit or set to `0` for the standard limit of 125. |
+| `writeFunction` | *(optional)* Modbus write function code: `"0x06"` = FC06 Write Single Register, `"0x10"` = FC16 Write Multiple Registers (default). Use `"0x06"` for devices that do not support FC16 (e.g. Wolf FHS280). FC06 can only write single registers (size=1); multi-register writes (float32 etc.) always use FC16. |
 | `elements` | Array of register groups |
 
 **Group:**
@@ -236,12 +240,13 @@ SunSpec not-implemented sentinel (`0x8000` = -32768) is automatically ignored.
 
 1. Open the Edomi Modbus Admin: `http://<edomi-ip>/Modbus/modbus_admin.php`
 2. Click **JSON importieren**
-3. Select the JSON file
-4. Enter the connection parameters:
+3. Select the JSON file — optional fields (`ip`, `port`, `unitID`, `timeout`, `maxRegs`) are automatically pre-filled from the JSON if present
+4. Review and complete the connection parameters:
    - **IP address** of the device or gateway
    - **Port** (default: `502`)
    - **Unit ID** (Modbus slave address)
    - **Byte order** (`Big-Endian` for SunSpec/Fronius and most devices)
+   - **Timeout** in seconds (default: `1`)
 5. Click **Importieren**
 
 Re-importing an existing device preserves all KO assignments. Connection parameters are updated.

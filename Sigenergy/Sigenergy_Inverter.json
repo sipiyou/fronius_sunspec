@@ -2,6 +2,8 @@
   {
     "device": "Sigenergy_Inverter",
     "protocol": "TCP",
+    "port": 502,
+    "timeout": 3,
     "elements": [
       {
         "firstID": 501,

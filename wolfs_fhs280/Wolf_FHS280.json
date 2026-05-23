@@ -1,0 +1,98 @@
+[
+  {
+    "device": "Wolf_FHS280",
+    "protocol": "TCP",
+    "port": 502,
+    "timeout": 3,
+    "maxRegs": 30,
+    "writeFunction": "0x06",
+    "elements": [
+      {
+        "firstID": 5,
+        "group": "settings",
+        "elements": {
+          "2":  { "start": 5,  "size": 1, "rw": "RW", "function": "0x03", "name": "T_setpoint",                  "desc": "Solltemperatur (T Soll)",                                                             "type": "int16",      "unit": "°C",  "scaleFactor": "", "range": "5..62",   "notsupported": 0 },
+          "3":  { "start": 6,  "size": 1, "rw": "RW", "function": "0x03", "name": "T_min",                       "desc": "Mindesttemperatur (T min)",                                                           "type": "int16",      "unit": "°C",  "scaleFactor": "", "range": "5..62",   "notsupported": 0 },
+          "4":  { "start": 7,  "size": 1, "rw": "RW", "function": "0x03", "name": "T2_min",                      "desc": "Mindesttemperatur 2 (T2 min)",                                                        "type": "int16",      "unit": "°C",  "scaleFactor": "", "range": "5..62",   "notsupported": 0 },
+          "5":  { "start": 8,  "size": 1, "rw": "RW", "function": "0x03", "name": "Timer",                       "desc": "Timer (0=Off 1=On)",                                                                  "type": "uint16",     "unit": "",    "scaleFactor": "", "range": "0..1",    "notsupported": 0 },
+          "6":  { "start": 9,  "size": 1, "rw": "RW", "function": "0x03", "name": "Start_HP_Hour",               "desc": "HP-Startzeit Stunden (h_Uhr)",                                                        "type": "uint16",     "unit": "h",   "scaleFactor": "", "range": "0..23",   "notsupported": 0 },
+          "7":  { "start": 10, "size": 1, "rw": "RW", "function": "0x03", "name": "Start_HP_Min",                "desc": "HP-Startzeit Minuten (m_Uhr)",                                                        "type": "uint16",     "unit": "min", "scaleFactor": "", "range": "0..59",   "notsupported": 0 },
+          "8":  { "start": 11, "size": 1, "rw": "RW", "function": "0x03", "name": "Stop_HP_Hour",                "desc": "HP-Stopzeit Stunden (h_Stop)",                                                        "type": "uint16",     "unit": "h",   "scaleFactor": "", "range": "0..23",   "notsupported": 0 },
+          "9":  { "start": 12, "size": 1, "rw": "RW", "function": "0x03", "name": "Stop_HP_Min",                 "desc": "HP-Stopzeit Minuten (m_Stop)",                                                        "type": "uint16",     "unit": "min", "scaleFactor": "", "range": "0..59",   "notsupported": 0 },
+          "10": { "start": 13, "size": 1, "rw": "RW", "function": "0x03", "name": "H_pump",                      "desc": "Betriebsart (0=Off 1=Only HP 2=Only EL 3=HP+EL 4=Boiler 5=HP+Boiler)",               "type": "uint16",     "unit": "",    "scaleFactor": "", "range": "0..5",    "notsupported": 0 },
+          "11": { "start": 14, "size": 1, "rw": "RW", "function": "0x03", "name": "Legionel_Auto_function",      "desc": "Legionellen-Automatik (0=Off 1=60°C 2=65°C)",                                         "type": "uint16",     "unit": "",    "scaleFactor": "", "range": "0..2",    "notsupported": 0 },
+          "12": { "start": 15, "size": 1, "rw": "RW", "function": "0x03", "name": "Wwprotec",                    "desc": "Warmwasserschutz-Mindesttemperatur (Tmin RL)",                                         "type": "int16",      "unit": "°C",  "scaleFactor": "", "range": "5..20",   "notsupported": 0 },
+          "13": { "start": 16, "size": 1, "rw": "RW", "function": "0x03", "name": "FanOper",                     "desc": "Lüfterbetrieb (WP_LS) — AC: 0=Low 1=High; EC: 0=Off 1=Low 2=Mid 3=High",             "type": "uint16",     "unit": "",    "scaleFactor": "", "range": "0..3",    "notsupported": 0 },
+          "14": { "start": 17, "size": 1, "rw": "RW", "function": "0x03", "name": "FanCon",                      "desc": "KWL-Lüfterstufe (KWL) (0=Off 1=EC Low 2=EC Mid 3=EC High)",                           "type": "uint16",     "unit": "",    "scaleFactor": "", "range": "0..3",    "notsupported": 0 },
+          "15": { "start": 18, "size": 1, "rw": "RW", "function": "0x03", "name": "Solacel",                     "desc": "Solar-/PV-Betrieb (PV.Modus) (0=Off 1=Only HP 2=Only EL 3=HP+EL)",                   "type": "uint16",     "unit": "",    "scaleFactor": "", "range": "0..3",    "notsupported": 0 },
+          "16": { "start": 19, "size": 1, "rw": "RW", "function": "0x03", "name": "SC_HP",                       "desc": "Solar HP-Einschalttemperatur (T.PV_WP)",                                              "type": "int16",      "unit": "°C",  "scaleFactor": "", "range": "5..62",   "notsupported": 0 },
+          "17": { "start": 20, "size": 1, "rw": "RW", "function": "0x03", "name": "SC_EL",                       "desc": "Solar EL-Einschalttemperatur (T.PV_EL)",                                              "type": "int16",      "unit": "°C",  "scaleFactor": "", "range": "5..62",   "notsupported": 0 },
+          "18": { "start": 21, "size": 1, "rw": "RW", "function": "0x03", "name": "Holiday",                     "desc": "Urlaubsmodus (Ferien) (0=Off 1=1Woche 2=2Wochen 3=3Wochen 4=3Tage 5=Manuell)",       "type": "uint16",     "unit": "",    "scaleFactor": "", "range": "0..5",    "notsupported": 0 },
+          "19": { "start": 22, "size": 1, "rw": "RW", "function": "0x03", "name": "Man_days_set",                "desc": "Manuelle Urlaubstage (AbwTage)",                                                      "type": "uint16",     "unit": "d",   "scaleFactor": "", "range": "1..99",   "notsupported": 0 },
+          "20": { "start": 23, "size": 1, "rw": "RW", "function": "0x03", "name": "Boost",                       "desc": "Boost (0=Off 1=On)",                                                                  "type": "uint16",     "unit": "",    "scaleFactor": "", "range": "0..1",    "notsupported": 0 },
+          "21": { "start": 24, "size": 1, "rw": "RW", "function": "0x03", "name": "FanPause",                    "desc": "Lüfterpause (VenPause) (0=Off 1=30m/15s 2=30m/30s 3=60m/15s 4=60m/30s 5=90m/15s 6=90m/30s)", "type": "uint16", "unit": "", "scaleFactor": "", "range": "0..6", "notsupported": 0 },
+          "22": { "start": 26, "size": 1, "rw": "RW", "function": "0x03", "name": "Language",                    "desc": "Sprache (Sprache) (0=EN 1=DE 2=FR 3=NL 4=ES 5=IT 6=DA 7=SV 8=NO 9=PL 10=SL 11=HR)", "type": "uint16",     "unit": "",    "scaleFactor": "", "range": "0..11",   "notsupported": 0 },
+          "23": { "start": 27, "size": 1, "rw": "R",  "function": "0x03", "name": "Defrost",                     "desc": "Abtauart (Abtauart) (0=Air 1=Gas 2=Tmin RF) — NICHT VERÄNDERN",                      "type": "uint16",     "unit": "",    "scaleFactor": "", "range": "0..2",    "notsupported": 0 },
+          "24": { "start": 28, "size": 1, "rw": "RW", "function": "0x03", "name": "Anode",                       "desc": "Anode (Anode) (0=Off 1=On)",                                                          "type": "uint16",     "unit": "",    "scaleFactor": "", "range": "0..1",    "notsupported": 0 },
+          "25": { "start": 29, "size": 1, "rw": "RW", "function": "0x03", "name": "T_max",                       "desc": "Maximaltemperatur (T max)",                                                           "type": "int16",      "unit": "°C",  "scaleFactor": "", "range": "5..62",   "notsupported": 0 },
+          "26": { "start": 30, "size": 1, "rw": "R",  "function": "0x03", "name": "Fan_type",                    "desc": "Lüftertyp (VrmtTyp) (0=AC 1=EC)",                                                    "type": "uint16",     "unit": "",    "scaleFactor": "", "range": "0..1",    "notsupported": 0 },
+          "27": { "start": 31, "size": 1, "rw": "RW", "function": "0x03", "name": "EC_Fan_Level1",               "desc": "EC-Lüfter Stufe 1 (EC LS1)",                                                         "type": "uint16",     "unit": "%",   "scaleFactor": "", "range": "0..100",  "notsupported": 0 },
+          "28": { "start": 32, "size": 1, "rw": "RW", "function": "0x03", "name": "EC_Fan_Level2",               "desc": "EC-Lüfter Stufe 2 (EC LS2)",                                                         "type": "uint16",     "unit": "%",   "scaleFactor": "", "range": "0..100",  "notsupported": 0 },
+          "29": { "start": 33, "size": 1, "rw": "RW", "function": "0x03", "name": "EC_Fan_Level3",               "desc": "EC-Lüfter Stufe 3 (EC LS3)",                                                         "type": "uint16",     "unit": "%",   "scaleFactor": "", "range": "0..100",  "notsupported": 0 },
+          "30": { "start": 34, "size": 1, "rw": "RW", "function": "0x03", "name": "Legionel_Auto_function_days", "desc": "Legionellen-Automatik Intervall (Tage)",                                              "type": "uint16",     "unit": "d",   "scaleFactor": "", "range": "3..14",   "notsupported": 0 }
+        }
+      },
+      {
+        "firstID": 104,
+        "group": "rtc",
+        "elements": {
+          "2": { "start": 104, "size": 1, "rw": "RW", "function": "0x03", "name": "RTCSek",   "desc": "Echtzeituhr Sekunden",  "type": "uint16", "unit": "s",   "scaleFactor": "", "range": "0..59", "notsupported": 0 },
+          "3": { "start": 105, "size": 1, "rw": "RW", "function": "0x03", "name": "RTCMin",   "desc": "Echtzeituhr Minuten",   "type": "uint16", "unit": "min", "scaleFactor": "", "range": "0..59", "notsupported": 0 },
+          "4": { "start": 106, "size": 1, "rw": "RW", "function": "0x03", "name": "RTCHour",  "desc": "Echtzeituhr Stunden",   "type": "uint16", "unit": "h",   "scaleFactor": "", "range": "0..23", "notsupported": 0 },
+          "5": { "start": 107, "size": 1, "rw": "RW", "function": "0x03", "name": "RTCDay",   "desc": "Echtzeituhr Wochentag", "type": "uint16", "unit": "",    "scaleFactor": "", "range": "1..7",  "notsupported": 0 },
+          "6": { "start": 108, "size": 1, "rw": "RW", "function": "0x03", "name": "RTCDate",  "desc": "Echtzeituhr Tag",       "type": "uint16", "unit": "",    "scaleFactor": "", "range": "1..31", "notsupported": 0 },
+          "7": { "start": 109, "size": 1, "rw": "RW", "function": "0x03", "name": "RTCMonth", "desc": "Echtzeituhr Monat",     "type": "uint16", "unit": "",    "scaleFactor": "", "range": "1..12", "notsupported": 0 },
+          "8": { "start": 110, "size": 1, "rw": "RW", "function": "0x03", "name": "RTCYear",  "desc": "Echtzeituhr Jahr",      "type": "uint16", "unit": "",    "scaleFactor": "", "range": "",      "notsupported": 0 }
+        }
+      },
+      {
+        "firstID": 115,
+        "group": "modbus_config",
+        "elements": {
+          "2": { "start": 115, "size": 1, "rw": "R",  "function": "0x03", "name": "ModbusAdresse",    "desc": "Modbus Slave-Adresse",                                  "type": "uint16", "unit": "", "scaleFactor": "", "range": "1..247", "notsupported": 0 },
+          "3": { "start": 116, "size": 1, "rw": "R",  "function": "0x03", "name": "ModbusBaudrate",   "desc": "Baudrate (1=19200 2=9600)",                             "type": "uint16", "unit": "", "scaleFactor": "", "range": "1..2",   "notsupported": 0 },
+          "4": { "start": 117, "size": 1, "rw": "R",  "function": "0x03", "name": "Modbus_Paritet",   "desc": "Parität (0=None 1=ODD 2=EVEN)",                         "type": "uint16", "unit": "", "scaleFactor": "", "range": "0..2",   "notsupported": 0 },
+          "5": { "start": 118, "size": 1, "rw": "RW", "function": "0x03", "name": "ModbusAllowWrite", "desc": "Schreibzugriff (0=kein Schreiben erlaubt 1=Schreiben)", "type": "uint16", "unit": "", "scaleFactor": "", "range": "0..1",   "notsupported": 0 }
+        }
+      },
+      {
+        "firstID": 1,
+        "group": "measurements",
+        "elements": {
+          "2":  { "start": 1,  "size": 1, "rw": "R", "function": "0x04", "name": "DI1_Pressostat", "desc": "Pressostat (0=Off 1=On)",                            "type": "uint16",     "unit": "",   "scaleFactor": "",  "range": "0..1", "notsupported": 0 },
+          "3":  { "start": 2,  "size": 1, "rw": "R", "function": "0x04", "name": "DI2_Solcelle",   "desc": "Solar-/PV-Eingang (0=Off 1=On)",                     "type": "uint16",     "unit": "",   "scaleFactor": "",  "range": "0..1", "notsupported": 0 },
+          "4":  { "start": 8,  "size": 1, "rw": "R", "function": "0x04", "name": "T1",             "desc": "Verdampfer-Temperatur",                              "type": "int16",      "unit": "°C", "scaleFactor": "-1","range": "",     "notsupported": 0 },
+          "5":  { "start": 9,  "size": 1, "rw": "R", "function": "0x04", "name": "T2",             "desc": "Speicher-Temperatur",                                "type": "int16",      "unit": "°C", "scaleFactor": "-1","range": "",     "notsupported": 0 },
+          "6":  { "start": 10, "size": 1, "rw": "R", "function": "0x04", "name": "Kompressor",     "desc": "Kompressor (0=Off 1=On)",                            "type": "uint16",     "unit": "",   "scaleFactor": "",  "range": "0..1", "notsupported": 0 },
+          "7":  { "start": 11, "size": 1, "rw": "R", "function": "0x04", "name": "Elpatron",       "desc": "Elektro-Heizstab (0=Off 1=On)",                      "type": "uint16",     "unit": "",   "scaleFactor": "",  "range": "0..1", "notsupported": 0 },
+          "8":  { "start": 12, "size": 1, "rw": "R", "function": "0x04", "name": "Kedel",          "desc": "Kessel/Boiler (0=Off 1=On)",                         "type": "uint16",     "unit": "",   "scaleFactor": "",  "range": "0..1", "notsupported": 0 },
+          "9":  { "start": 13, "size": 1, "rw": "R", "function": "0x04", "name": "Magnetventil",   "desc": "Magnetventil (0=Off 1=On)",                          "type": "uint16",     "unit": "",   "scaleFactor": "",  "range": "0..1", "notsupported": 0 },
+          "10": { "start": 14, "size": 1, "rw": "R", "function": "0x04", "name": "Kondensator",    "desc": "Kondensator (0=Off 1=On)",                           "type": "uint16",     "unit": "",   "scaleFactor": "",  "range": "0..1", "notsupported": 0 },
+          "11": { "start": 15, "size": 1, "rw": "R", "function": "0x04", "name": "Ventilator",     "desc": "Lüfter (0=Off 1=On)",                                "type": "uint16",     "unit": "",   "scaleFactor": "",  "range": "0..1", "notsupported": 0 },
+          "12": { "start": 16, "size": 1, "rw": "R", "function": "0x04", "name": "DA0_0_10V",      "desc": "Analogausgang 0-10V EC-Lüfter (1000=10V 500=5V)",    "type": "uint16",     "unit": "",   "scaleFactor": "",  "range": "0..1000","notsupported": 0 },
+          "13": { "start": 17, "size": 1, "rw": "R", "function": "0x04", "name": "Status",         "desc": "Status-Bitfeld",                                     "type": "bitfield16", "unit": "",   "scaleFactor": "",  "range": "",     "notsupported": 0 },
+          "14": { "start": 18, "size": 1, "rw": "R", "function": "0x04", "name": "Rest_days",      "desc": "Verbleibende Urlaubstage",                           "type": "uint16",     "unit": "d",  "scaleFactor": "",  "range": "",     "notsupported": 0 },
+          "15": { "start": 19, "size": 1, "rw": "R", "function": "0x04", "name": "Unit_Alarm",     "desc": "Alarm-Bitfeld",                                      "type": "bitfield16", "unit": "",   "scaleFactor": "",  "range": "",     "notsupported": 0 },
+          "16": { "start": 20, "size": 1, "rw": "R", "function": "0x04", "name": "T3",             "desc": "Temperatur T3",                                      "type": "int16",      "unit": "°C", "scaleFactor": "-1","range": "",     "notsupported": 0 }
+        }
+      },
+      {
+        "firstID": 120,
+        "group": "firmware",
+        "elements": {
+          "2": { "start": 120, "size": 1, "rw": "R", "function": "0x04", "name": "FW_Version", "desc": "Firmware-Version", "type": "uint16", "unit": "", "scaleFactor": "-1", "range": "", "notsupported": 0 }
+        }
+      }
+    ]
+  }
+]

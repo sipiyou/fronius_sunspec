@@ -3,6 +3,8 @@
     "device": "Sigenergy_Plant",
     "protocol": "TCP",
     "unitID": 247,
+    "port": 502,
+    "timeout": 3,
     "elements": [
       {
         "firstID": 1,
