@@ -3,7 +3,8 @@
 JSON register maps and tools for the Edomi Modbus TCP Connector (LBS 19002762).
 
 Supports **Fronius SunSpec** devices (XLSX → JSON via `xls2json.py`) as well as
-**non-SunSpec devices** with hand-crafted JSON (e.g. Eastron SDM120, Stiebel Eltron / Tecalor ISG).
+**non-SunSpec devices** with hand-crafted JSON (Eastron SDM120, Eastron SDM72DM,
+Stiebel Eltron / Tecalor ISG, Vestel EVC04, Sigenergy, Wolf FHS280).
 
 ---
 
@@ -52,10 +53,17 @@ To determine which mode your GEN24 uses, read register 40070 (`ID`):
 
 | File | Device | Notes |
 |---|---|---|
-| `Eastron_SDM120_Slave_101.json` | Eastron SDM120 single-phase energy meter | Slave ID 101, FC03*, Big-Endian |
-| `Tecalor_ISG_WPM3i.json` | Stiebel Eltron / Tecalor ISG web (WPM 3/3i) | Slave ID 1 (fixed), FC04/FC03, Big-Endian; 252 registers: Block 1 (501–583), Block 2 (1501–1521 RW), Block 3 (2501–2505), Block 4 Energie gesamt+WP1–WP6 (3501–3643) |
+| `Eastron/Eastron_SDM120_Slave_101.json` | Eastron SDM120 single-phase energy meter | Slave ID 101 (pre-filled), FC04/FC03, Big-Endian, maxRegs 30 |
+| `Eastron/Eastron_SDM72DM_V2.json` | Eastron SDM72DM three-phase energy meter | FC04/FC03, Big-Endian |
+| `Tecalor_ISG_WPM3i.json` | Stiebel Eltron / Tecalor ISG web (WPM 3/3i) | Slave ID 1 (fixed), FC04/FC03, Big-Endian; 252 registers in 4 blocks |
+| `Vestel/Vestel_EVC04.json` | Vestel EVC04 EV charger | FC03, Big-Endian |
+| `Sigenergy/Sigenergy_Plant.json` | Sigenergy Energy Management System – Plant | Slave ID 247 (fixed), FC03/FC04, Big-Endian |
+| `Sigenergy/Sigenergy_Inverter.json` | Sigenergy Inverter | Slave ID 1–246 (user-configurable), FC03/FC04, Big-Endian |
+| `wolfs_fhs280/Wolf_FHS280.json` | Wolf FHS 280 heat pump water heater | FC03/FC04, Big-Endian, **FC06 write**, maxRegs 30 (gateway limit) |
 
-\* SDM120 measurement registers use FC04 (Input Registers) as per the official Eastron V2.4 protocol specification.
+**Sigenergy note:** The Sigenergy protocol inverts the standard FC assignment — FC03 reads their RO registers (30xxx address space) and FC04 reads their holding/settings registers (40xxx). If reads return errors, swap FC03/FC04 on import.
+
+**Wolf FHS280 note:** Native protocol is Modbus RTU RS485. Connection via RS485-to-TCP gateway required. The gateway limits reads to 30 registers per request (`maxRegs: 30`). Write operations use FC06 (Write Single Register) since FC16 is not supported.
 
 ---
 
@@ -78,9 +86,6 @@ Output JSON files are placed in the same directory as `xls2json.py`, named after
 
 **`xls2json.py` requires Fronius-format XLSX files** (with a "Complete Map" sheet).
 It is not applicable to non-SunSpec devices — use hand-crafted JSON for those.
-
-**IP address, port and Unit ID are intentionally not stored in the JSON.**
-These connection parameters are entered as required fields during import in the Edomi admin backend.
 
 ---
 
@@ -130,7 +135,7 @@ Each JSON file contains an array with one device object:
 | `port` | *(optional)* TCP port — pre-fills the Port field on import. Default: `502`. |
 | `unitID` | *(optional)* Fixed Modbus unit ID — pre-fills the Unit-ID field on import. Omit for devices with user-configurable slave addresses. |
 | `timeout` | *(optional)* TCP connect/read timeout in seconds — pre-fills the Timeout field on import. Default: `1`. |
-| `maxRegs` | *(optional)* Maximum registers per Modbus read request. Use for devices with batch-size limits (e.g. Eastron SDM120: `30`). Omit or set to `0` for the standard limit of 125. |
+| `maxRegs` | *(optional)* Maximum registers per read request. Use for devices or gateways with batch-size limits (e.g. Eastron SDM120 or RS485-TCP gateways: `30`). Omit or set to `0` for the standard limit of 125. |
 | `writeFunction` | *(optional)* Modbus write function code: `"0x06"` = FC06 Write Single Register, `"0x10"` = FC16 Write Multiple Registers (default). Use `"0x06"` for devices that do not support FC16 (e.g. Wolf FHS280). FC06 can only write single registers (size=1); multi-register writes (float32 etc.) always use FC16. |
 | `elements` | Array of register groups |
 
@@ -145,6 +150,12 @@ Each JSON file contains an array with one device object:
 > **Why do element keys start at `"2"`?**  
 > Edomi LBS outputs are numbered E1, E2, E3, … E*n*. E1 is reserved for the group/device
 > status. The first data value is therefore E2, which maps to key `"2"`, the second to `"3"`, etc.
+
+> **Group batch size:**  
+> All registers in a group are read in a single Modbus request (one batch per poll cycle).
+> Keep the span from the first to the last register within the `maxRegs` limit.
+> Gaps within a group (unused register addresses) are read but discarded — they do not
+> need to be defined as elements.
 
 **Register:**
 
@@ -172,6 +183,9 @@ Each JSON file contains an array with one device object:
 > Equivalently: the `start` value equals the last four digits of the register number
 > (e.g. `30007` → `7`, `40013` → `13`) — which also matches the Lo-byte column in the
 > datasheet (e.g. `0x0006` + 1 = 7).
+>
+> Some devices (e.g. Sigenergy) use 0-based notation starting at 30000/40000 instead of 30001/40001.
+> In that case: `start = (address − 30000) + 1` for 3xxxx, `start = (address − 40000) + 1` for 4xxxx.
 
 ### Data Types
 
@@ -208,7 +222,8 @@ All registers in a group must use the **same** function code. The connector dete
 function code from the first register's `function` field during JSON import and stores it
 per group in the database.
 
-Write operations always use FC16 (Write Multiple Registers) regardless of the read function code.
+Write operations use **FC16** (Write Multiple Registers) by default. Set `"writeFunction": "0x06"`
+at device level to use **FC06** (Write Single Register) for devices that do not support FC16.
 
 ### Scale Factors
 
@@ -240,25 +255,31 @@ SunSpec not-implemented sentinel (`0x8000` = -32768) is automatically ignored.
 
 1. Open the Edomi Modbus Admin: `http://<edomi-ip>/Modbus/modbus_admin.php`
 2. Click **JSON importieren**
-3. Select the JSON file — optional fields (`ip`, `port`, `unitID`, `timeout`, `maxRegs`) are automatically pre-filled from the JSON if present
+3. Select the JSON file — optional fields (`ip`, `port`, `unitID`, `timeout`, `maxRegs`, `writeFunction`) are automatically pre-filled from the JSON if present
 4. Review and complete the connection parameters:
    - **IP address** of the device or gateway
    - **Port** (default: `502`)
    - **Unit ID** (Modbus slave address)
    - **Byte order** (`Big-Endian` for SunSpec/Fronius and most devices)
-   - **Timeout** in seconds (default: `1`)
+   - **Timeout** in seconds (default: `1`; increase to 3–5 s for RS485 gateways)
+   - **Write function** (FC16 default; FC06 for devices without FC16 support)
 5. Click **Importieren**
 
 Re-importing an existing device preserves all KO assignments. Connection parameters are updated.
 
 **Device-specific import parameters:**
 
-| Device | Unit ID | Byte order |
-|---|---|---|
-| Fronius GEN24 inverter | `1` | Big-Endian |
-| Fronius Smart Meter | `4` | Big-Endian |
-| Eastron SDM120 | per device (e.g. `101`) | Big-Endian |
-| Stiebel Eltron / Tecalor ISG web | `1` (fixed) | Big-Endian |
+| Device | Unit ID | Byte order | Write FC | Notes |
+|---|---|---|---|---|
+| Fronius GEN24 inverter | `1` | Big-Endian | FC16 | |
+| Fronius Smart Meter | `4` | Big-Endian | FC16 | |
+| Eastron SDM120 | per device (e.g. `101`) | Big-Endian | FC16 | maxRegs 30 |
+| Eastron SDM72DM | per device | Big-Endian | FC16 | |
+| Stiebel Eltron / Tecalor ISG web | `1` (fixed) | Big-Endian | FC16 | |
+| Vestel EVC04 | per device | Big-Endian | FC16 | |
+| Sigenergy Plant | `247` (fixed) | Big-Endian | FC16 | |
+| Sigenergy Inverter | `1`–`246` | Big-Endian | FC16 | |
+| Wolf FHS280 | per device | Big-Endian | **FC06** | RS485 gateway, maxRegs 30, timeout 3 s |
 
 ---
 
@@ -277,8 +298,17 @@ git/
 ├── Smart_Meter_*.json                   # Fronius Smart Meter register maps
 ├── Tauro_*.json                         # Fronius Tauro register maps
 ├── Verto_*.json                         # Fronius Verto register maps
-├── Eastron_SDM120_Slave_101.json        # Eastron SDM120 single-phase meter
-└── Tecalor_ISG_WPM3i.json              # Stiebel Eltron / Tecalor ISG (WPM 3/3i)
+├── Tecalor_ISG_WPM3i.json              # Stiebel Eltron / Tecalor ISG (WPM 3/3i)
+├── Eastron/
+│   ├── Eastron_SDM120_Slave_101.json   # Eastron SDM120 single-phase meter
+│   └── Eastron_SDM72DM_V2.json         # Eastron SDM72DM three-phase meter
+├── Vestel/
+│   └── Vestel_EVC04.json               # Vestel EVC04 EV charger
+├── Sigenergy/
+│   ├── Sigenergy_Plant.json            # Sigenergy Plant (slave 247)
+│   └── Sigenergy_Inverter.json         # Sigenergy Inverter (slave 1–246)
+└── wolfs_fhs280/
+    └── Wolf_FHS280.json                # Wolf FHS 280 heat pump water heater
 ```
 
 ---

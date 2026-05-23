@@ -1,0 +1,101 @@
+[
+  {
+    "device": "Eastron_SDM72DM_V2",
+    "protocol": "TCP",
+    "elements": [
+      {
+        "firstID": 1,
+        "group": "per_phase_measurements",
+        "elements": {
+          "2":  {"start": 1,  "size": 2, "rw": "R", "function": "0x04", "name": "VoltageL1",       "desc": "Phase 1 line to neutral volts (0x0000)",  "type": "float32", "unit": "V",    "scaleFactor": "", "range": "", "notsupported": 0},
+          "3":  {"start": 3,  "size": 2, "rw": "R", "function": "0x04", "name": "VoltageL2",       "desc": "Phase 2 line to neutral volts (0x0002)",  "type": "float32", "unit": "V",    "scaleFactor": "", "range": "", "notsupported": 0},
+          "4":  {"start": 5,  "size": 2, "rw": "R", "function": "0x04", "name": "VoltageL3",       "desc": "Phase 3 line to neutral volts (0x0004)",  "type": "float32", "unit": "V",    "scaleFactor": "", "range": "", "notsupported": 0},
+          "5":  {"start": 7,  "size": 2, "rw": "R", "function": "0x04", "name": "CurrentL1",       "desc": "Phase 1 current (0x0006)",                "type": "float32", "unit": "A",    "scaleFactor": "", "range": "", "notsupported": 0},
+          "6":  {"start": 9,  "size": 2, "rw": "R", "function": "0x04", "name": "CurrentL2",       "desc": "Phase 2 current (0x0008)",                "type": "float32", "unit": "A",    "scaleFactor": "", "range": "", "notsupported": 0},
+          "7":  {"start": 11, "size": 2, "rw": "R", "function": "0x04", "name": "CurrentL3",       "desc": "Phase 3 current (0x000A)",                "type": "float32", "unit": "A",    "scaleFactor": "", "range": "", "notsupported": 0},
+          "8":  {"start": 13, "size": 2, "rw": "R", "function": "0x04", "name": "ActivePowerL1",   "desc": "Phase 1 active power (0x000C)",           "type": "float32", "unit": "W",    "scaleFactor": "", "range": "", "notsupported": 0},
+          "9":  {"start": 15, "size": 2, "rw": "R", "function": "0x04", "name": "ActivePowerL2",   "desc": "Phase 2 active power (0x000E)",           "type": "float32", "unit": "W",    "scaleFactor": "", "range": "", "notsupported": 0},
+          "10": {"start": 17, "size": 2, "rw": "R", "function": "0x04", "name": "ActivePowerL3",   "desc": "Phase 3 active power (0x0010)",           "type": "float32", "unit": "W",    "scaleFactor": "", "range": "", "notsupported": 0},
+          "11": {"start": 19, "size": 2, "rw": "R", "function": "0x04", "name": "ApparentPowerL1", "desc": "Phase 1 apparent power (0x0012)",         "type": "float32", "unit": "VA",   "scaleFactor": "", "range": "", "notsupported": 0},
+          "12": {"start": 21, "size": 2, "rw": "R", "function": "0x04", "name": "ApparentPowerL2", "desc": "Phase 2 apparent power (0x0014)",         "type": "float32", "unit": "VA",   "scaleFactor": "", "range": "", "notsupported": 0},
+          "13": {"start": 23, "size": 2, "rw": "R", "function": "0x04", "name": "ApparentPowerL3", "desc": "Phase 3 apparent power (0x0016)",         "type": "float32", "unit": "VA",   "scaleFactor": "", "range": "", "notsupported": 0},
+          "14": {"start": 25, "size": 2, "rw": "R", "function": "0x04", "name": "ReactivePowerL1", "desc": "Phase 1 reactive power (0x0018)",         "type": "float32", "unit": "VAr",  "scaleFactor": "", "range": "", "notsupported": 0},
+          "15": {"start": 27, "size": 2, "rw": "R", "function": "0x04", "name": "ReactivePowerL2", "desc": "Phase 2 reactive power (0x001A)",         "type": "float32", "unit": "VAr",  "scaleFactor": "", "range": "", "notsupported": 0},
+          "16": {"start": 29, "size": 2, "rw": "R", "function": "0x04", "name": "ReactivePowerL3", "desc": "Phase 3 reactive power (0x001C)",         "type": "float32", "unit": "VAr",  "scaleFactor": "", "range": "", "notsupported": 0},
+          "17": {"start": 31, "size": 2, "rw": "R", "function": "0x04", "name": "PowerFactorL1",   "desc": "Phase 1 power factor (0x001E)",           "type": "float32", "unit": "",     "scaleFactor": "", "range": "-1..1", "notsupported": 0},
+          "18": {"start": 33, "size": 2, "rw": "R", "function": "0x04", "name": "PowerFactorL2",   "desc": "Phase 2 power factor (0x0020)",           "type": "float32", "unit": "",     "scaleFactor": "", "range": "-1..1", "notsupported": 0},
+          "19": {"start": 35, "size": 2, "rw": "R", "function": "0x04", "name": "PowerFactorL3",   "desc": "Phase 3 power factor (0x0022)",           "type": "float32", "unit": "",     "scaleFactor": "", "range": "-1..1", "notsupported": 0}
+        }
+      },
+      {
+        "firstID": 43,
+        "group": "totals_and_energy",
+        "elements": {
+          "2":  {"start": 43, "size": 2, "rw": "R", "function": "0x04", "name": "AvgVoltageLineNeutral", "desc": "Average line to neutral volts (0x002A)",   "type": "float32", "unit": "V",    "scaleFactor": "", "range": "", "notsupported": 0},
+          "3":  {"start": 47, "size": 2, "rw": "R", "function": "0x04", "name": "AvgLineCurrent",        "desc": "Average line current (0x002E)",             "type": "float32", "unit": "A",    "scaleFactor": "", "range": "", "notsupported": 0},
+          "4":  {"start": 49, "size": 2, "rw": "R", "function": "0x04", "name": "SumLineCurrents",       "desc": "Sum of line currents (0x0030)",             "type": "float32", "unit": "A",    "scaleFactor": "", "range": "", "notsupported": 0},
+          "5":  {"start": 53, "size": 2, "rw": "R", "function": "0x04", "name": "TotalActivePower",      "desc": "Total system power (0x0034)",               "type": "float32", "unit": "W",    "scaleFactor": "", "range": "", "notsupported": 0},
+          "6":  {"start": 57, "size": 2, "rw": "R", "function": "0x04", "name": "TotalApparentPower",    "desc": "Total system volt amps (0x0038)",           "type": "float32", "unit": "VA",   "scaleFactor": "", "range": "", "notsupported": 0},
+          "7":  {"start": 61, "size": 2, "rw": "R", "function": "0x04", "name": "TotalReactivePower",    "desc": "Total system VAr (0x003C)",                 "type": "float32", "unit": "VAr",  "scaleFactor": "", "range": "", "notsupported": 0},
+          "8":  {"start": 63, "size": 2, "rw": "R", "function": "0x04", "name": "TotalPowerFactor",      "desc": "Total system power factor (0x003E)",        "type": "float32", "unit": "",     "scaleFactor": "", "range": "-1..1", "notsupported": 0},
+          "9":  {"start": 71, "size": 2, "rw": "R", "function": "0x04", "name": "Frequency",             "desc": "Frequency of supply voltages (0x0046)",     "type": "float32", "unit": "Hz",   "scaleFactor": "", "range": "", "notsupported": 0},
+          "10": {"start": 73, "size": 2, "rw": "R", "function": "0x04", "name": "ImportActiveEnergy",    "desc": "Import active energy (0x0048)",             "type": "float32", "unit": "kWh",  "scaleFactor": "", "range": "", "notsupported": 0},
+          "11": {"start": 75, "size": 2, "rw": "R", "function": "0x04", "name": "ExportActiveEnergy",    "desc": "Export active energy (0x004A)",             "type": "float32", "unit": "kWh",  "scaleFactor": "", "range": "", "notsupported": 0}
+        }
+      },
+      {
+        "firstID": 201,
+        "group": "line_voltages",
+        "elements": {
+          "2": {"start": 201, "size": 2, "rw": "R", "function": "0x04", "name": "VoltageL1L2",     "desc": "Line 1 to Line 2 volts (0x00C8)",           "type": "float32", "unit": "V",  "scaleFactor": "", "range": "", "notsupported": 0},
+          "3": {"start": 203, "size": 2, "rw": "R", "function": "0x04", "name": "VoltageL2L3",     "desc": "Line 2 to Line 3 volts (0x00CA)",           "type": "float32", "unit": "V",  "scaleFactor": "", "range": "", "notsupported": 0},
+          "4": {"start": 205, "size": 2, "rw": "R", "function": "0x04", "name": "VoltageL3L1",     "desc": "Line 3 to Line 1 volts (0x00CC)",           "type": "float32", "unit": "V",  "scaleFactor": "", "range": "", "notsupported": 0},
+          "5": {"start": 207, "size": 2, "rw": "R", "function": "0x04", "name": "AvgLineVoltage",  "desc": "Average line to line volts (0x00CE)",       "type": "float32", "unit": "V",  "scaleFactor": "", "range": "", "notsupported": 0},
+          "6": {"start": 225, "size": 2, "rw": "R", "function": "0x04", "name": "NeutralCurrent",  "desc": "Neutral current (0x00E0)",                  "type": "float32", "unit": "A",  "scaleFactor": "", "range": "", "notsupported": 0}
+        }
+      },
+      {
+        "firstID": 343,
+        "group": "energy_totals",
+        "elements": {
+          "2": {"start": 343, "size": 2, "rw": "R", "function": "0x04", "name": "TotalActiveEnergy",              "desc": "Total active energy Import+Export (0x0156)",     "type": "float32", "unit": "kWh",   "scaleFactor": "", "range": "", "notsupported": 0},
+          "3": {"start": 345, "size": 2, "rw": "R", "function": "0x04", "name": "TotalReactiveEnergy",            "desc": "Total reactive energy (0x0158)",                 "type": "float32", "unit": "kVArh", "scaleFactor": "", "range": "", "notsupported": 0},
+          "4": {"start": 385, "size": 2, "rw": "R", "function": "0x04", "name": "ResettableTotalActiveEnergy",    "desc": "Resettable total active energy (0x0180)",        "type": "float32", "unit": "kWh",   "scaleFactor": "", "range": "", "notsupported": 0},
+          "5": {"start": 387, "size": 2, "rw": "R", "function": "0x04", "name": "ResettableTotalReactiveEnergy",  "desc": "Resettable total reactive energy (0x0182)",      "type": "float32", "unit": "kVArh", "scaleFactor": "", "range": "", "notsupported": 0},
+          "6": {"start": 389, "size": 2, "rw": "R", "function": "0x04", "name": "ResettableImportActiveEnergy",   "desc": "Resettable import active energy (0x0184)",       "type": "float32", "unit": "kWh",   "scaleFactor": "", "range": "", "notsupported": 0},
+          "7": {"start": 391, "size": 2, "rw": "R", "function": "0x04", "name": "ResettableExportActiveEnergy",   "desc": "Resettable export active energy (0x0186)",       "type": "float32", "unit": "kWh",   "scaleFactor": "", "range": "", "notsupported": 0},
+          "8": {"start": 397, "size": 2, "rw": "R", "function": "0x04", "name": "NetActiveEnergy",                "desc": "Net kWh Import - Export (0x018C)",               "type": "float32", "unit": "kWh",   "scaleFactor": "", "range": "", "notsupported": 0}
+        }
+      },
+      {
+        "firstID": 1281,
+        "group": "import_export_power",
+        "elements": {
+          "2": {"start": 1281, "size": 2, "rw": "R", "function": "0x04", "name": "TotalImportActivePower", "desc": "Total import active power (0x0500)", "type": "float32", "unit": "W", "scaleFactor": "", "range": "", "notsupported": 0},
+          "3": {"start": 1283, "size": 2, "rw": "R", "function": "0x04", "name": "TotalExportActivePower", "desc": "Total export active power (0x0502)", "type": "float32", "unit": "W", "scaleFactor": "", "range": "", "notsupported": 0}
+        }
+      },
+      {
+        "firstID": 11,
+        "group": "setup_comms",
+        "elements": {
+          "2": {"start": 11, "size": 2, "rw": "RW", "function": "0x03", "name": "SystemType",      "desc": "System type (0x000A)",          "type": "float32", "unit": "",   "scaleFactor": "", "range": "1=1P2W, 3=3P4W (default)", "notsupported": 0},
+          "3": {"start": 13, "size": 2, "rw": "RW", "function": "0x03", "name": "PulseWidth",      "desc": "Relay pulse width ms (0x000C)", "type": "float32", "unit": "ms", "scaleFactor": "", "range": "60, 100, 200", "notsupported": 0},
+          "4": {"start": 19, "size": 2, "rw": "RW", "function": "0x03", "name": "ParityStopBit",   "desc": "Parity and stop bit (0x0012)",  "type": "float32", "unit": "",   "scaleFactor": "", "range": "0=1stop/noparity, 1=1stop/even, 2=1stop/odd, 3=2stop/noparity", "notsupported": 0},
+          "5": {"start": 21, "size": 2, "rw": "RW", "function": "0x03", "name": "ModbusAddress",   "desc": "Modbus node address (0x0014)",  "type": "float32", "unit": "",   "scaleFactor": "", "range": "1-247", "notsupported": 0},
+          "6": {"start": 23, "size": 2, "rw": "RW", "function": "0x03", "name": "PulseConstant",   "desc": "Pulse constant (0x0016)",       "type": "float32", "unit": "",   "scaleFactor": "", "range": "0=1000imp/kWh, 1=100, 2=10, 3=1", "notsupported": 0},
+          "7": {"start": 29, "size": 2, "rw": "RW", "function": "0x03", "name": "NetworkBaudRate", "desc": "Network baud rate (0x001C)",    "type": "float32", "unit": "",   "scaleFactor": "", "range": "0=2400, 1=4800, 2=9600 (default), 3=19200, 5=1200", "notsupported": 0}
+        }
+      },
+      {
+        "firstID": 59,
+        "group": "setup_display",
+        "elements": {
+          "2": {"start": 59, "size": 2, "rw": "RW", "function": "0x03", "name": "AutoScrollTime",   "desc": "Automatic scroll display time s (0x003A)", "type": "float32", "unit": "s",   "scaleFactor": "", "range": "0-60, 0=no scroll", "notsupported": 0},
+          "3": {"start": 61, "size": 2, "rw": "RW", "function": "0x03", "name": "BacklitTime",      "desc": "Backlit time min (0x003C)",                "type": "float32", "unit": "min", "scaleFactor": "", "range": "0-121, 0=always on, 121=always off", "notsupported": 0},
+          "4": {"start": 87, "size": 2, "rw": "RW", "function": "0x03", "name": "PulseEnergyType",  "desc": "Pulse 1 energy type (0x0056)",             "type": "float32", "unit": "",    "scaleFactor": "", "range": "1=import active, 2=total active (default), 4=export active", "notsupported": 0}
+        }
+      }
+    ]
+  }
+]
