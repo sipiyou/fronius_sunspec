@@ -279,9 +279,7 @@ Re-importing an existing device preserves all KO assignments. Connection paramet
 | Vestel EVC04 | per device | Big-Endian | FC16 | |
 | Sigenergy Plant | `247` (fixed) | Big-Endian | FC16 | |
 | Sigenergy Inverter | `1`–`246` | Big-Endian | FC16 | |
-| Wolf FHS280 | per device | Big-Endian | **FC06** | RS485 gateway, maxRegs 30, timeout 3 s |
-
----
+| Wolf FHS280/180, Ecodesign ED3xx,400,180 WL, Vesttherm VT31xx, Kermi X-change fresh, Richter-Frenzel: Optiline Fresh 300 | per device | Big-Endian | **FC06** | RS485 gateway, maxRegs 30, timeout 3 s |
 
 ## Directory Structure
 
