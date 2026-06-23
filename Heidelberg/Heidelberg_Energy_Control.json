@@ -6,7 +6,7 @@
     "timeout": 3,
     "maxRegs": 30,
     "writeFunction": "0x06",
-    "_note": "Heidelberg/Amperfied Wallbox Energy Control. Native Modbus RTU (RS485) → über RS485-zu-IP-Gateway als Modbus-TCP. Import: IP = Gateway-IP, Port = Gateway-Port (oft 502), Unit-ID = DIP-Schalter-Adresse der Wallbox (Standalone meist 1), Byte order = Big-Endian, Timeout 3s, Write-FC = FC06. Adressableitung: connector-start = Bus-Adr + 1 (start-1 geht auf den Draht). Strom-Register sind scaleFactor -1 (Gerät in 0.1A; KO-Wert in A → wird beim Schreiben ×10). WICHTIG zur Steuerung: 'Maximal current command' (Bus-Adr 261) = 0 sperrt Laden, 60..160 = 6..16A. Wird das WatchDog-Timeout (Bus-Adr 257, Default 15000ms) >0 gesetzt, MUSS innerhalb dieser Zeit erneut auf 261 geschrieben werden, sonst fällt die Wallbox auf den FailSafe-Strom (262) zurück. Ladefreigabe zusätzlich: extern lock (Hardware) + Remote lock (259) müssen entsperrt sein. Layout-Version per Bus-Adr 4 prüfen (diese Map: V1.0.7+).",
+    "_note": "Heidelberg/Amperfied Wallbox Energy Control. Native Modbus RTU (RS485) → über RS485-zu-IP-Gateway als Modbus-TCP. Import: IP = Gateway-IP, Port = Gateway-Port (oft 502), Unit-ID = DIP-Schalter-Adresse der Wallbox (Standalone meist 1), Byte order = Big-Endian, Timeout 3s, Write-FC = FC06. Adressableitung: connector-start = Bus-Adr + 1 (start-1 geht auf den Draht). Strom-Register sind scaleFactor -1 (Gerät in 0.1A; KO-Wert in A → wird beim Schreiben ×10). WICHTIG zur Steuerung: 'Maximal current command' (Bus-Adr 262) = 0 sperrt Laden, 60..160 = 6..16A. Wird das WatchDog-Timeout (Bus-Adr 258, Default 15000ms) >0 gesetzt, MUSS innerhalb dieser Zeit erneut auf 262 geschrieben werden, sonst fällt die Wallbox auf den FailSafe-Strom (262) zurück. Ladefreigabe zusätzlich: extern lock (Hardware) + Remote lock (260) müssen entsperrt sein. Layout-Version per Bus-Adr 4 prüfen (diese Map: V1.0.7+).",
     "elements": [
       {
         "firstID": 5,
@@ -39,7 +39,7 @@
         "firstID": 258,
         "group": "steuerung",
         "elements": {
-          "2": {"start": 258, "size": 1, "rw": "RW", "function": "0x03", "name": "WatchdogTimeout", "desc": "ModBus-Master WatchDog Timeout in ms (0=Aus). Default 15000. Wird >0 gesetzt, muss 261 regelmäßig neu geschrieben werden.", "type": "uint16", "unit": "ms", "scaleFactor": "", "range": "0..65535", "notsupported": 0},
+          "2": {"start": 258, "size": 1, "rw": "RW", "function": "0x03", "name": "WatchdogTimeout", "desc": "ModBus-Master WatchDog Timeout in ms (0=Aus). Default 15000. Wird >0 gesetzt, muss 262 regelmäßig neu geschrieben werden.", "type": "uint16", "unit": "ms", "scaleFactor": "", "range": "0..65535", "notsupported": 0},
           "3": {"start": 259, "size": 1, "rw": "RW", "function": "0x03", "name": "StandbyControl", "desc": "Standby-Funktion (Stromsparen ohne Fahrzeug): 0=aktiviert, 4=deaktiviert", "type": "uint16", "unit": "", "scaleFactor": "", "range": "0/4", "notsupported": 0},
           "4": {"start": 260, "size": 1, "rw": "RW", "function": "0x03", "name": "RemoteLock", "desc": "Remote-Verriegelung (nur wenn extern lock entriegelt): 0=verriegelt, 1=entriegelt", "type": "uint16", "unit": "", "scaleFactor": "", "range": "0/1", "notsupported": 0},
           "5": {"start": 262, "size": 1, "rw": "RW", "function": "0x03", "name": "MaxStromSollwert", "desc": "Maximal current command = Ladestrom-Sollwert. 0=Laden gesperrt, 6..16A. KO-Wert in A (wird ×10 geschrieben).", "type": "uint16", "unit": "A", "scaleFactor": "-1", "range": "0; 60..160 (0.1A)", "notsupported": 0},
